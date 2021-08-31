@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Borium.org: Parser</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="98.css">
+		<link rel="stylesheet" href="docs.css">
+		<link rel="stylesheet" href="vs.css">
+		<script src="includeHTML.js"></script>
+	</head>
+	<body ontouchstart>
+		<aside>
+			<div>
+				<ul class="tree-view">
+					<div w3-include-html="treeview.html">
+					</div>
+				</ul>
+			</div>
+		</aside>
+		<main>
+			<h1>Recursive Descent Parser [Generator]</h1>
+			<hr>
+			<p>
+				Recursive descent parsers are documented in detail in many places, starting with the usual go-to place <a href="https://en.wikipedia.org/wiki/Recursive_descent_parser">Wikipedia</a>. The parser I'm toying with
+				is based on RDP by Adrian Johnstone and Elizabeth Scott. Most of RDP development happened about two decades
+				ago, so the original ftp site is long gone but there are references to the parser in many places if you
+				know where to look. <a href="https://www.boost.org/doc/libs/1_77_0/libs/spirit/classic/doc/references.html">Boost documentation reference page</a>
+				lists RDP among other things. Most references in there are from year 2000 or earlier, so their page is definitely
+				not the list of most recent developments though.
+			</p>
+			<h2>So what is going on with that RDP?</h2>
+			<p>
+				The sandbox for RDP is on <a href="https://github.com/borium-org/recursive-descent-parser">GitHub</a>. It is
+				still a work in progress, there are features that I had implemented in other repo some time ago but they
+				are not included in this repo. Java output generator is the next step, with some of it done elsewhere.
+			</p>
+			<p>
+				Original RDP was self-hosting. It was capable of producing its own parser source using a BNF language grammar
+				with embedded code in C, and there were also few modules in C that contained code that made the generated
+				parser not just a parser but also a generator that generated itself. 
+			</p>
+			<p>
+				Current implementation is capable of producing C output parser that is byte-for-byte same as original RDP
+				output.
+			</p>
+			<p>
+				The reasoning and history of this project is documented in README.md in that GitHub repo.
+			</p>
+		</main>
+	</body>
+	<script>
+		includeHTML();
+
+	</script>
+</html>
