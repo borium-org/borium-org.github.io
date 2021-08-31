@@ -35,6 +35,33 @@
 						structure of the grammar.
 					</li>
 					<li>
+						Java bytecode converter: The parser generator is an app that was converted from C to Java. The
+						main inconvenience of Java app is that it needs JVM installed and the command line is filled with
+						more of the irrelevant stuff to execute a JAR file, compared to a simple EXE that does not need any
+						of that overhead. Converter would take Java bytecodes and convert them into compilation-ready C++.
+					</li>
+					<li>
+						Widget library: Something along the lines of MFC, SWT, AWT, WX, QT or similar. Definitely in Java,
+						converted to C++ with the bytecode converter above. Why, if some of these libraries are already in
+						C++? Java is much more ergonomic as a language, but the output of C++ is better to execute on any
+						Intel x64 or ARM AArch64 platform.
+					</li>
+					<li>
+						Text editor: Something that is closer to Eclipse than to Notepad. It will be again in Java as the
+						primary language, with conversion to C++ to compile into native code. It will use the widget
+						library from above.
+					</li>
+					<li>
+						A boring programming language. Why? Because Java/C# are too far away from actual hardware and C/C++
+						are too inconvenient to deal with, too much duplication of information between headers and sources,
+						too many features missing that are taken for granted in Java and C#, and I'm not talking about garbage
+						collection.
+					</li>
+					<li>
+						A boring compiler for the above: Language without a compiler is rather pointless, even if it is
+						at least mildly entertaining.
+					</li>
+					<li>
 						Small operating systems: In the past I developed a RTOS for 32-bit processors (ColdFire, ARM7,
 						ARM9). It was lots of fun then, and would be a lot more fun now for 64-bit processors such as
 						Intel x64 and ARM v8 now.
