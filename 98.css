@@ -508,9 +508,13 @@ select:active
 {
 	background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='16' height='17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0 0h16v17H0V0zm1 16h14V1H1v15z' fill='gray'/%3E%3Cpath fill='silver' d='M1 1h14v15H1z'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M12 7H5v1h1v1h1v1h1v1h1v-1h1V9h1V8h1V7z' fill='%23000'/%3E%3C/svg%3E")
 }
-a
+a:link
 {
-	color: #00f
+	color: #00F
+}
+a:visited
+{
+	color: #808
 }
 a:focus
 {
@@ -528,10 +532,15 @@ ul.tree-view li
 {
 	list-style-type: none
 }
-ul.tree-view a
+ul.tree-view a:link
 {
-	color: #000;
-	text-decoration: none
+	color: #00F;
+	text-decoration: underline
+}
+ul.tree-view a:visited
+{
+	color: #808;
+	text-decoration: underline
 }
 ul.tree-view a:focus
 {
