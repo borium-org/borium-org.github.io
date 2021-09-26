@@ -12,7 +12,7 @@
 		<aside>
 			<div>
 				<ul class="tree-view">
-					<div w3-include-html="treeview.html">
+					<div w3-include-html="lang-treeview.html">
 					</div>
 				</ul>
 			</div>
@@ -50,7 +50,7 @@
 				To add to this mess, I'll toy with a simple boring language of my own. If there will ever be a web page
 				criticizing this programming language, I'll take it as s compliment.
 			</p>
-			<h1>Current state of programming languages</h2>
+			<h1>Current state of programming languages</h1>
 			<hr>
 			<p>
 				To figure out what programming languages are or are not, I'll divide relevant languages into categories.
@@ -61,6 +61,64 @@
 				calculate a square root of each element of a sorted array filled with factorials of last decimal digit
 				of N first Fibonacci numbers.
 			</p>
+			<h2 id="cat1">Category 1 - Assemblers</h2>
+			<p>
+				Assemblers are most powerful in terms what they can do and least convenient in terms of how much work
+				they need to get things done. Each computing architecture has at least one variant of assembler. Intel
+				used to have two, one with ATT and another with GNU syntax, or something like that.
+			</p>
+			<h3>Instruction Set Support</h3>
+			<p>
+				Assemblers support all available instructions in the target computing architecture. Assemblers can
+				produce any instructions in any sequence, even if the resulting program is meaningless.
+			</p>
+			<p>
+				If the architecture is newer than assembler translator for the architecture then newer instructions can
+				be implemented as a stream of bytes that matches the new instruction. These streams of bytes can also
+				produce sequences that are not valid instructions on the architecture.
+			</p>
+			<h3>Typing</h3>
+			<p>
+				Assemblers are typeless. While data has no specific type, it has size. Size is determined by the
+				instruction, each instruction operates on data of specific sizes.
+			</p>
+			<p>
+				Assembler program can fetch two pieces of data from 64-bit locations in memory and store them into
+				floating point registers or into general purpose registers, and then add them together, as IEEE-754
+				format floating point values if data is in floating point registers, or as integers or as a pointer and
+				integer. However, there's nothing to stop the program from fetching a pointer and a double into 64-bit
+				registers and then adding, or-ing or xor-ing them together. The result is often meaningless but the
+				program is more than happy to calculate the result without anyone complaining about that nonsense
+				during compilation or execution.
+			</p>
+			<h3>Memory Management</h3>
+			<p>
+				Memory management in assembly apps is all manual. There are conventions for determining the total
+				available amount of memory, and conventions to subdivide that memory into smaller pieces for the data.
+			</p>
+			<p>
+				Pure assembler apps usually run on 'bare metal'. In embedded systems this is the code that sets up and
+				initializes the environment for languages like C or C++. Similarly, in PCs assembler is used to
+				implement first code in BIOS that allows the rest of BIOS to be written in C. This initial code
+				determines the total amount of available memory. This is done through conventions such as Serial
+				Presence Detect that is used to determine sizes for each present memory module. In microcontroller apps
+				the amount of memory is usually known, it depends on the microcontroller that is being used. App may
+				read microprocessor device identification register and use that data to determine the amount of memory
+				through a look table.
+			</p>
+			<p>
+				Subdividing that memory is based on another set of conventions. The initial amount of memory that is
+				available for dynamic allocation is usually framed as a single block with its address and length and
+				possibly some other housekeeping data stored in a memory control block. To allocate the data the app
+				code creates another memory control block some distance away in the middle of current memory block and
+				modify the first memory control block to reflect the change. To deallocate a memory block, the memory
+				control block of that memory is marked as available, and the memory can be combined with free blocks of
+				memory that are located before and/or after that new free block.
+			</p>
+			<h2 id="cat2">Category 2 - C, C++, Pascal, Oberon, Modula</h2>
+			<h2 id="cat3">Category 3 - C#, Java, Kotlin</h2>
+			<h2 id="cat4">Category 4 - Python, JavaScript</h2>
+			<h2 id="cat5">Category 5 - Perl, TCL</h2>
 		</main>
 	</body>
 	<script>
