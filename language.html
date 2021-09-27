@@ -61,7 +61,7 @@
 				calculate a square root of each element of a sorted array filled with factorials of last decimal digit
 				of N first Fibonacci numbers.
 			</p>
-			<h2 id="cat1">Category 1 - Assemblers</h2>
+			<h2 id="cat1">Category 1: Assemblers</h2>
 			<p>
 				Assemblers are most powerful in terms what they can do and least convenient in terms of how much work
 				they need to get things done. Each computing architecture has at least one variant of assembler. Intel
@@ -115,10 +115,151 @@
 				control block of that memory is marked as available, and the memory can be combined with free blocks of
 				memory that are located before and/or after that new free block.
 			</p>
-			<h2 id="cat2">Category 2 - C, C++, Pascal, Oberon, Modula</h2>
-			<h2 id="cat3">Category 3 - C#, Java, Kotlin</h2>
-			<h2 id="cat4">Category 4 - Python, JavaScript</h2>
-			<h2 id="cat5">Category 5 - Perl, TCL</h2>
+			<h2 id="cat2">Category 2: C, C++, Pascal, Oberon, Modula</h2>
+			<p>
+				Category 2 languages were developed during 1970s and 1980s, C in 1972, C++ in 1985, Pascal in 1970,
+				Oberon in 1987, Modula in 1975, Objective-C in 1984. Pascal, Oberon and Modula had few successors. The
+				longest-lived Pascal variant is Delphi, it is probably still in top 20 of popularity indices. These
+				languages were so adequate for their purpose at the time that there was no significant development in
+				this category since then. The languages evolved or died, the ones that survived got more features, but
+				no new significant languages in this category were introduced.
+			</p>
+			<h3>Instruction Set Support</h3>
+			<p>
+				Cat 2 languages are usually translated into native instruction set of the architecture that the app is
+				meant to be executed on. Instruction set of compiled app may be different from instruction set of the
+				compiler, in this case the compilation process is more specifically called cross-compilation. This does
+				not change the concept, the app source code is translated into a sequence of native instructions for the
+				target computing architecture.
+			</p>
+			<p>
+				Cat 2 languages produce specific instruction sequences that include certain instructions in certain
+				order. Not all instructions can be represented by the language itself. There are tricks external to Cat
+				2 languages to generate these extra instructions. There are intrinsic functions that look like native
+				functions from the language perspective, but compilers know how to handle these functions differently.
+				There is a concept of 'inline assembly' that allows writing assembly code within the Cat 2 program.
+				Strictly speaking, this inline assembly is not Cat 2 program but a fragment of Cat 1 language code that
+				is placed inside a Cat 2 program code.
+			</p>
+			<h3>Typing</h3>
+			<p>
+				All entities in Cat 2 programs have a type. Type specifies which values can be stored in a variable of
+				that type. Entities are created by specifying a type for that entity. Types can be primitive types that
+				are built into the language, and types can be user-defined and constructed of other types, including
+				primitive and user-defined types that are defined before that new user-defined type can be created.
+			</p>
+			<p>
+				Typing in Cat 2 languages is usually weak. Entity has a type, but language allows treating any entity
+				of one type as an entity of any other type, and these two types don't even have to be related. All these
+				type casts must be instantiated manually, so there is some type safety, but, when necessary, these type
+				casts can be inserted to accomplish something that would be otherwise impossible if the typing rules
+				were to be followed strictly.
+			</p>
+			<p>
+				The best example of where typing must be defeated is the memory allocation and deallocation code. The
+				initial memory layout is a big sequence of bytes with a memory control block in front of it. When memory
+				is allocated, new memory block is created in the middle of that sequence of bytes, and the address of
+				the beginning of first sequence of bytes is returned as an address of allocated memory block. In this
+				process first type cast is when a Memory Control Block entity is created in the middle of the byte
+				sequence, and second type cast happens when an address of byte sequence is returned to the user app as
+				a pointer to newly allocated memory of their desired type. Without type casts Cat 2 language typing
+				system would not let the code compile.
+			</p>
+			<h3>Memory Management</h3>
+			<p>
+				Memory management in Cat 2 languages is all manual. App developer decides when the memory must be
+				allocated and when it can be deallocated.
+			</p>
+			<p>
+				Manual allocation can lead to memory inconsistencies. In manual memory allocation cycle the sequence of
+				events is following:
+				<ol>
+					<li>
+						App invokes the API to allocate the memory.
+					</li>
+					<li>
+						A pointer to allocated memory is returned to the app.
+					</li>
+					<li>
+						A pointer is passed when app invokes API to deallocate memory.
+					</li>
+					<li>
+						The original pointer and all its copies are still available to the app.
+					</li>
+				</ol>
+				At step 2 the pointer to the memory is available to the app. App can pass the pointer around and
+				unlimited copies of that pointer can be made. When in step 3 the pointer is passed to deallocation API,
+				the pointer value is not destroyed, any copies of that pointer are not destroyed either. This leads to
+				'use after free' or 'free after free' bugs. These bugs are inherent to manual allocation because the
+				pointer from step 2 is necessary for deallocation but it exists in countless copies even after the
+				deallocation in step 4.
+			</p>
+			<p>
+				There are third party libraries for automatic memory management using garbage collection, but from the
+				language perspective they are just a set of APIs for allocating memory that is tracked by that third
+				party library and deallocation happens from within that library. The library still uses manual memory
+				deallocation facilioties of the language, but user app is developed without invoking the deallocation
+				API explicitly. In this case, step 1 is slightly modified to conform to the third party library API,
+				step 2 is not changed, and steps 3 and 4 sre not available because the third party library executes
+				step 3 only after all pointers from step 4 disappear by going out of their scopes.
+			</p>
+			<h3>Interoperability</h3>
+			<p>
+				Cat 2 languages are fully interoperable with Cat 1 languages if the Cat 1 language is the one that
+				matches the target execution environment. Cat 1 language can produce any sequence of instructions,
+				therefore it can produce a sequence of instructions that any Cat 2 language would produce.
+			</p>
+			<p>
+				Cat 2 compiled code can be invoked from Cat 1 code using exactly same instruction sequence as Cat 2
+				would use to invoke it. Cat 1 code can be invoked from Cat 2 code if Cat 1 code follows ABI that Cat 2
+				languages use for subroutine/method/function entry and exit code, parameter passing and for register
+				allocation within that code fragment.
+			</p>
+			<h2 id="cat3">Category 3: C#, Java, Kotlin</h2>
+			<p>
+			</p>
+			<h3>Instruction Set Support</h3>
+			<p>
+			</p>
+			<h3>Typing</h3>
+			<p>
+			</p>
+			<h3>Memory Management</h3>
+			<p>
+			</p>
+			<h3>Interoperability</h3>
+			<p>
+			</p>
+			<h2 id="cat4">Category 4: Python, JavaScript</h2>
+			<p>
+			</p>
+			<h3>Instruction Set Support</h3>
+			<p>
+			</p>
+			<h3>Typing</h3>
+			<p>
+			</p>
+			<h3>Memory Management</h3>
+			<p>
+			</p>
+			<h3>Interoperability</h3>
+			<p>
+			</p>
+			<h2 id="cat5">Category 5: Perl, TCL</h2>
+			<p>
+			</p>
+			<h3>Instruction Set Support</h3>
+			<p>
+			</p>
+			<h3>Typing</h3>
+			<p>
+			</p>
+			<h3>Memory Management</h3>
+			<p>
+			</p>
+			<h3>Interoperability</h3>
+			<p>
+			</p>
 		</main>
 	</body>
 	<script>
