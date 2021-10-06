@@ -299,8 +299,24 @@
 			</p>
 			<h3>Interoperability</h3>
 			<p>
-				Programs compiled from Cat 3 languages are executing in the environment that is impemented in Cat 2
-				languages.
+				Programs compiled from Cat 3 languages are executing in the environment that is implemented in Cat 2
+				languages. Therefore, there are easy mechanisms built into their respective virtual environments that
+				can execute code fragments written in Cat 2 or Cat 1 languages. Java and other JVM-based languages use
+				so-called 'native interface' where Cat 2 code is written in "C" convention (no C++ function name
+				mangling), and C functions must follow a specific naming convention to be accessible from Java. C# and
+				other CLI-based languages use either
+				<a href="https://docs.microsoft.com/en-us/dotnet/standard/native-interop/best-practices">native interoperability</a>
+				or Managed C++ interface code. Managed C++ is effectively a mix of C++ and C# with extra syntax
+				extensions that determine whether an object is a C++ object or C# object. There are different versions
+				of operator 'new' for each, and C# objects are not to be 'delete'-d in C++ code.
+			</p>
+			<p>
+				JVM and CLI both implement interface through which native code can call back into JVM or CLI code.
+				Interoperability between Cat 2 and Cat 3 languages is bidirectional, but different Cat 3 languages do
+				not get along well with each other if they are executing in different virtual environments. There is a
+				<a href="http://jni4net.com/">jni4net</a> library that allows executing Java code from C# code and vice
+				versa. The process is quite painful, the code relies very heavily on reflection and the library hasn't
+				been updated for quite a while.
 			</p>
 			<h2 id="cat4">Category 4: Python, JavaScript</h2>
 			<p>
