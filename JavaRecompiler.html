@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>JavaRecompiler - Borium</title>
+<script>document.documentElement.className="client-js";RLCONF={"wgBreakFrames":!1,"wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgRequestId":"e7b2b87acf75feedbf154958","wgCSPNonce":!1,"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":!1,"wgNamespaceNumber":0,"wgPageName":"JavaRecompiler","wgTitle":"JavaRecompiler","wgCurRevisionId":38,"wgRevisionId":38,"wgArticleId":7,"wgIsArticle":!0,"wgIsRedirect":!1,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgRelevantPageName":"JavaRecompiler","wgRelevantArticleId":7,"wgIsProbablyEditable":!0,"wgRelevantPageIsProbablyEditable":!0,"wgRestrictionEdit":[],"wgRestrictionMove":[]};RLSTATE={"site.styles":"ready","noscript":"ready","user.styles":"ready","user":"ready",
+"user.options":"loading","skins.vector.styles.legacy":"ready"};RLPAGEMODULES=["site","mediawiki.page.ready","mediawiki.toc","skins.vector.legacy.js"];</script>
+<script>(RLQ=window.RLQ||[]).push(function(){mw.loader.implement("user.options@1hzgi",function($,jQuery,require,module){/*@nomin*/mw.user.tokens.set({"patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});
+});});</script>
+<link rel="stylesheet" href="load.php@lang=en&amp;modules=skins.vector.styles.legacy&amp;only=styles&amp;skin=vector.css"/>
+<script async="" src="load.php@lang=en&amp;modules=startup&amp;only=scripts&amp;raw=1&amp;skin=vector"></script>
+<meta name="generator" content="MediaWiki 1.37.1"/>
+<meta name="format-detection" content="telephone=no"/>
+<link rel="shortcut icon" href="favicon.ico"/>
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject mw-editable page-JavaRecompiler rootpage-JavaRecompiler skin-vector action-view skin-vector-legacy"><div id="mw-page-base" class="noprint"></div>
+<div id="mw-head-base" class="noprint"></div>
+<div id="content" class="mw-body" role="main">
+	<a id="top"></a>
+	<div id="siteNotice"></div>
+	<div class="mw-indicators">
+	</div>
+	<h1 id="firstHeading" class="firstHeading" >Java Recompiler</h1>
+	<div id="bodyContent" class="vector-body">
+		<div id="siteSub" class="noprint">From Borium</div>
+		<div id="contentSub"></div>
+		<div id="contentSub2"></div>
+		
+		<div id="jump-to-nav"></div>
+		<a class="mw-jump-link" href="JavaRecompiler.html#mw-head">Jump to navigation</a>
+		<a class="mw-jump-link" href="JavaRecompiler.html#searchInput">Jump to search</a>
+		<div id="mw-content-text" class="mw-body-content mw-content-ltr" lang="en" dir="ltr"><div class="mw-parser-output"><p><strong>Java Recompiler</strong>
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="JavaRecompiler.html#Why?"><span class="tocnumber">1</span> <span class="toctext">Why?</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="JavaRecompiler.html#Is_it_possible?"><span class="tocnumber">2</span> <span class="toctext">Is it possible?</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="JavaRecompiler.html#How?"><span class="tocnumber">3</span> <span class="toctext">How?</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="JavaRecompiler.html#Significant_differences_between_Java_and_C++"><span class="tocnumber">4</span> <span class="toctext">Significant differences between Java and C++</span></a>
+<ul>
+<li class="toclevel-2 tocsection-5"><a href="JavaRecompiler.html#Type_erasure,_instruction_NEW"><span class="tocnumber">4.1</span> <span class="toctext">Type erasure, instruction NEW</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="JavaRecompiler.html#Garbage_collection"><span class="tocnumber">4.2</span> <span class="toctext">Garbage collection</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="JavaRecompiler.html#Stack-allocated_objects"><span class="tocnumber">4.3</span> <span class="toctext">Stack-allocated objects</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="JavaRecompiler.html#Passing_objects_by_value"><span class="tocnumber">4.4</span> <span class="toctext">Passing objects by value</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="JavaRecompiler.html#Instruction_CHECKCAST"><span class="tocnumber">4.5</span> <span class="toctext">Instruction CHECKCAST</span></a></li>
+<li class="toclevel-2 tocsection-10"><a href="JavaRecompiler.html#Instruction_INVOKEINTERFACE"><span class="tocnumber">4.6</span> <span class="toctext">Instruction INVOKEINTERFACE</span></a></li>
+<li class="toclevel-2 tocsection-11"><a href="JavaRecompiler.html#Instructions_MONITORENTER_and_MONITOREXIT"><span class="tocnumber">4.7</span> <span class="toctext">Instructions MONITORENTER and MONITOREXIT</span></a></li>
+<li class="toclevel-2 tocsection-12"><a href="JavaRecompiler.html#Runtime_library_objects"><span class="tocnumber">4.8</span> <span class="toctext">Runtime library objects</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-13"><a href="JavaRecompiler.html#Implementation_notes"><span class="tocnumber">5</span> <span class="toctext">Implementation notes</span></a></li>
+</ul>
+</div>
+
+<h1><span id="Why.3F"></span><span class="mw-headline" id="Why?">Why?</span></h1>
+<p>The idea behind a recompiler is to write code in Java that runs like native code written in C++.
+</p><p>I tried to port MFC to Java, and it didn't go well. The problems I had were all most likely related to Java/JNI/native code interaction.
+</p>
+<ol><li>JVM executed some Java code starting with main().</li>
+<li>Somewhere along the way some window is created.</li>
+<li>Java code calls JNI CreateWindow() wrapper.</li>
+<li>CreateWindow() wrapper calls library CreateWindow() function.</li>
+<li>CreateWindow() sends some messages to the window. Window proc is implemented in native code.</li>
+<li>Native code uses JNI to invoke some Java method.</li>
+<li>Java method creates a child window through JNI CreateWindow() wrapper.</li>
+<li>CreateWindow() wrapper calls library CreateWindow() function.</li>
+<li>CreateWindow() sends some messages to the child window. Window proc is implemented in native code.</li>
+<li>Native code uses JNI to invoke some Java method.</li>
+<li>etc...</li></ol>
+<p>This JVM/JNI/Win32/JNI/JVM/JNI/Win32/JNI/JVM/... sandwich was failing when complexity of ported code got high enough. Code ran differently in Eclipse with debugging, or in Eclipse without debugging, or without Eclipse. Debugging this nightmare was almost impossible because of different random failures all over the place.
+</p>
+<h1><span id="Is_it_possible.3F"></span><span class="mw-headline" id="Is_it_possible?">Is it possible?</span></h1>
+<p>There are some Java Source to C++ source converters, from <b><a rel="nofollow" class="external text" href="https://www.tangiblesoftwaresolutions.com/product_details/java_to_cplusplus_converter_details.html">Tangible Software Solutions</a></b> or an online converter from <b><a rel="nofollow" class="external text" href="https://kalkicode.com/ai/java-to-cplusplus-converter-online">Kalki Code</a></b>, but online tool is not usable for production usage, and Tangible converter specifically warns about mismatches in Java and C++ code behavior.
+</p><p>There was a discussion on <b><a rel="nofollow" class="external text" href="https://softwarerecs.stackexchange.com/questions/79668/java-to-c-converter">Stack Overflow</a></b> where most answers were 'You just can't do that, the languages are too different'. However, all those answers missed a simple point: Java is a Cat 3 language that runs on Cat 2 JVM runtime. Each fragment of Java bytecode executes on JVM and some fragment of JVM implements that behavior. There are also parts of JVM that execute ion background and provide the rest of functionality, such as garbage collector and threading, for example. Therefore, since all Cat 3 language runtime behavior is provided by Cat 2 software, it is possible to write Cat 2 software that perfectly matches behavior of Cat 3 application. The complexity of such Cat 2 software could be easily comparable to implementation of JVM, but nonetheless it is possible.
+</p><p>My needs are quite specific so developing a new tool is not a bad way to go. I don't need entire JVM, no specific garbage collection if there are C++ features to implement smart pointers that take care of deallocation of objects through reference counters and whatnot. Garbage collection is not necessary if code is written in a way that when reference goes out of scope then deallocation can be immediately executed if there are no other references to same object. If each object has a reference count, garbage collection would work better only in the case if we have a data structure with circular references. In this case reference counted deallocator would leave some objects allocated forever, leaking memory. MFC memory debug code would point that out eventually, and we would take care of it then.
+</p>
+<h1><span id="How.3F"></span><span class="mw-headline" id="How?">How?</span></h1>
+<p>There are many possible paths that start with Java source and end with compiled native executable.
+</p>
+<ol><li>We can write a Java compiler that generates straight native code. Each Java bytecode would be replaced by somewhat equivalent native code. Debugging this output would be the most painful part of development.</li>
+<li>We can write a Java compiler that has assembly code for output. Each Java bytecode would be replaced by a list of assembly instructions. Debugging this output would be easier, but not by much.</li>
+<li>We can write a Java compiler that produces C++ code for output. Each Java bytecode would be replaced by some C++ code. Debugging of output code would be easiest, but debugging the code generator part of the compiler would be still quite complex.</li>
+<li>We can compile the Java code using a regular compiler, and translate bytecodes into C++ code. This would be easiest overall, even if it involves most steps - compile Java, convert bytecode, compile C++. There are enough Java compilers to choose from, the output is trivial, and in most cases generating C++ code will be quite easy, based on one single instruction of the bytecode at a time. Debugging will also be easiest, each line of C++ will be equivalent to one or more bytecodes, in most cases one C++ line of code will match one Java line of code.</li></ol>
+<h1><span id="Significant_differences_between_Java_and_C.2B.2B"></span><span class="mw-headline" id="Significant_differences_between_Java_and_C++">Significant differences between Java and C++</span></h1>
+<p>There are few significant differences between the two that need to be taken care of. Some differences are specific to bytecode instructions, some are caused by design decisions in the JVM.
+</p>
+<h2><span id="Type_erasure.2C_instruction_NEW"></span><span class="mw-headline" id="Type_erasure,_instruction_NEW">Type erasure, instruction NEW</span></h2>
+<p>Template system in Java is much simpler compared to C++. Generic arguments must be classes derived from Object or some specific class. A class with generic parameters can always expect that interface of the generic parameter is same as interface of the base class used to declare the generic parameter.
+</p><p>ArrayList always has generics that are same as Object, for example. Therefore, the concrete type of generic is not needed for correct implementation of ArrayList if the parameter is a String, since the interface ArrayList cares about is same as Object. ArrayList does not need to do anything differently just because it stores strings and not plain objects. However, when declaring a field of ArrayList type, in C++ we need to know the exact type of the template parameter.
+</p><p>Declarations are easy if the field has a Signature attribute. Signature attribute contains all generic parameters for the field.
+</p><p>Allocating a new object is more difficult. Bytecode executes NEW instruction and the type in the instruction is without generic parameters. JVM just does not need to know what types are erased. C++ code needs to create an ArrayList equivalent object with all the template parameters, but the parameter list will only be known when the result of the allocation is being stored into a field with that Signature attribute.
+</p>
+<h2><span class="mw-headline" id="Garbage_collection">Garbage collection</span></h2>
+<p>Java has garbage collection because there is no explicit way to deallocate memory. In C++ we will use pointer wrapper objects that will be automatically deallocated at the end of scope. Destructor will decrement the usage count of an object, and will delete the object if usage counter becomes 0.
+</p><p>The allocation part for the pointer will also be less trivial. When pointer is created, it will be null. Each time when pointer is assigned, instead of direct assignment there would be a function that checks old pointer value for null, if non-null it will decrement usage counter of old object, then pointer will point to new object, and new object usage counter will be incremented to reflect that. The devil is in details but all this should be doable. May be even C++ operator overloading will make this easier to follow, but a dedicated function is far easier to debug.
+</p>
+<h2><span class="mw-headline" id="Stack-allocated_objects">Stack-allocated objects</span></h2>
+<p>C++ has capability to allocate objects on stack, and MFC uses these objects quite extensively. Java always uses dynamically allocated objects because the garbage collector cannot deal with objects on stack. To make C++ output code use stack objects to match MFC usage pattern, we can create an annotation that we add to the object reference in Java, and recompiler will generate different code when this object is being created.
+</p><p>Deallocating this object at the end of scope will also be different, but the presence of annotation should tell us that there are no pointers and usage counters involved.
+</p>
+<h2><span class="mw-headline" id="Passing_objects_by_value">Passing objects by value</span></h2>
+<p>This is a somewhat difficult one to decide how to implement.
+</p><p>The primary requirement of recompiler is that C++ code must be semantically same as Java code, so if Java code is executed we get same output and behavior as if we execute the C++ output code.
+</p><p>Java does not support passing objects by value. The Java code would have to use an intermediate, possibly generic, object that contains the copy of object to be passed as value. The called function will take this wrapped object and will unwrap it internally for the called function. The wrapper is necessary so that for each pass by value new object is created instead of old object being passed around multiple times.
+</p><p>However, this wrapping and unwrapping must be undone when C++ code is being generated. We'll deal with this when the time is right.
+</p>
+<h2><span class="mw-headline" id="Instruction_CHECKCAST">Instruction CHECKCAST</span></h2>
+<p>CHECKCAST is used to verify if object is of specific type. C++ RTTI does not have enough information to determine this, so extra information is necessary in each object. This information can be auto-generated by the recompiler.
+</p>
+<h2><span class="mw-headline" id="Instruction_INVOKEINTERFACE">Instruction INVOKEINTERFACE</span></h2>
+<p>INVOKEINTERFACE is used to invoke a method that is part of the class and part of an interface. C++ may be able to emulate this through abstract base class. Multiple inheritance would not be an issue because Java interfaces do not add fields to the derived class, and methods usually don't conflict with each other.
+</p><p>We'll solve this issue when we get there.
+</p>
+<h2><span class="mw-headline" id="Instructions_MONITORENTER_and_MONITOREXIT">Instructions MONITORENTER and MONITOREXIT</span></h2>
+<p>No reason to predict doom yet. We'll solve this issue when we get there.
+</p>
+<h2><span class="mw-headline" id="Runtime_library_objects">Runtime library objects</span></h2>
+<p>Many objects in java.lang and other java.x namespaces are performing special functions that are not easily convertible from raw Java to C++. These objects, Thread and String for example, will be manually implemented and not converted from Java source code.
+</p>
+<h1><span class="mw-headline" id="Implementation_notes">Implementation notes</span></h1>
+<p>Recompiler implementation notes are on <b><a href="JavaRecompilerImplementationNotes.html" title="JavaRecompilerImplementationNotes">Implementation Notes</a></b> page.
+</p>
+
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key bitnami_mediawiki:pcache:idhash:7-0!canonical and timestamp 20220129065952 and revision id 38. Serialized with JSON.
+ -->
+</div>
+<div class="printfooter">Retrieved from "<a dir="ltr" href="http://192.168.0.42:81/wiki/index.php?title=JavaRecompiler&amp;oldid=38">http://192.168.0.42:81/wiki/index.php?title=JavaRecompiler&amp;oldid=38</a>"</div></div>
+		<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>
+	</div>
+</div>
+
+
+<footer id="footer" class="mw-footer" role="contentinfo" >
+	<ul id="footer-info" >
+	<li id="footer-info-lastmod"> This page was last edited on 29 January 2022, at 06:58.</li>
+</ul>
+
+	<ul id="footer-places" >
+	<li id="footer-places-privacy"><a href="Borium%253APrivacy_policy.html" title="Borium:Privacy policy">Privacy policy</a></li>
+	<li id="footer-places-about"><a href="Borium%253AAbout.html" title="Borium:About">About Borium</a></li>
+	<li id="footer-places-disclaimer"><a href="Borium%253AGeneral_disclaimer.html" title="Borium:General disclaimer">Disclaimers</a></li>
+</ul>
+
+	<ul id="footer-icons" class="noprint">
+	<li id="footer-poweredbyico"><a href="https://www.mediawiki.org/"><img src="resources/assets/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" srcset="resources/assets/poweredby_mediawiki_132x47.png 1.5x, resources/assets/poweredby_mediawiki_176x62.png 2x" width="88" height="31" loading="lazy"/></a></li>
+</ul>
+
+</footer>
+
+
+<script>(RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgPageParseReport":{"limitreport":{"cputime":"0.016","walltime":"0.012","ppvisitednodes":{"value":39,"limit":1000000},"postexpandincludesize":{"value":0,"limit":2097152},"templateargumentsize":{"value":0,"limit":2097152},"expansiondepth":{"value":2,"limit":40},"expensivefunctioncount":{"value":0,"limit":100},"unstrip-depth":{"value":0,"limit":20},"unstrip-size":{"value":0,"limit":5000000},"timingprofile":["100.00%    0.000      1 -total"]},"cachereport":{"timestamp":"20220129065952","ttl":86400,"transientcontent":false}}});mw.config.set({"wgBackendResponseTime":147});});</script>
+</body></html>
