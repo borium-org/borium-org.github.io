@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <title>JavaRecompiler - Borium</title>
-<script>document.documentElement.className="client-js";RLCONF={"wgBreakFrames":!1,"wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgRequestId":"d183c36ec264b5effe55d74e","wgCSPNonce":!1,"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":!1,"wgNamespaceNumber":0,"wgPageName":"JavaRecompiler","wgTitle":"JavaRecompiler","wgCurRevisionId":42,"wgRevisionId":42,"wgArticleId":7,"wgIsArticle":!0,"wgIsRedirect":!1,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgRelevantPageName":"JavaRecompiler","wgRelevantArticleId":7,"wgIsProbablyEditable":!0,"wgRelevantPageIsProbablyEditable":!0,"wgRestrictionEdit":[],"wgRestrictionMove":[]};RLSTATE={"site.styles":"ready","noscript":"ready","user.styles":"ready","user":"ready",
+<script>document.documentElement.className="client-js";RLCONF={"wgBreakFrames":!1,"wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgRequestId":"d8e1845da1242abbda9053c9","wgCSPNonce":!1,"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":!1,"wgNamespaceNumber":0,"wgPageName":"JavaRecompiler","wgTitle":"JavaRecompiler","wgCurRevisionId":44,"wgRevisionId":44,"wgArticleId":7,"wgIsArticle":!0,"wgIsRedirect":!1,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgRelevantPageName":"JavaRecompiler","wgRelevantArticleId":7,"wgIsProbablyEditable":!0,"wgRelevantPageIsProbablyEditable":!0,"wgRestrictionEdit":[],"wgRestrictionMove":[]};RLSTATE={"site.styles":"ready","noscript":"ready","user.styles":"ready","user":"ready",
 "user.options":"loading","skins.vector.styles.legacy":"ready"};RLPAGEMODULES=["site","mediawiki.page.ready","mediawiki.toc","skins.vector.legacy.js"];</script>
 <script>(RLQ=window.RLQ||[]).push(function(){mw.loader.implement("user.options@1hzgi",function($,jQuery,require,module){/*@nomin*/mw.user.tokens.set({"patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});
 });});</script>
@@ -78,6 +78,8 @@
 <li>We can write a Java compiler that has assembly code for output. Each Java bytecode would be replaced by a list of assembly instructions. Debugging this output would be easier, but not by much.</li>
 <li>We can write a Java compiler that produces C++ code for output. Each Java bytecode would be replaced by some C++ code. Debugging of output code would be easiest, but debugging the code generator part of the compiler would be still quite complex.</li>
 <li>We can compile the Java code using a regular compiler, and translate bytecodes into C++ code. This would be easiest overall, even if it involves most steps - compile Java, convert bytecode, compile C++. There are enough Java compilers to choose from, the output is trivial, and in most cases generating C++ code will be quite easy, based on one single instruction of the bytecode at a time. Debugging will also be easiest, each line of C++ will be equivalent to one or more bytecodes, in most cases one C++ line of code will match one Java line of code.</li></ol>
+<p>I will pick the last option as being easiest, and will see where it goes. <b><a href="JavaRecompilerInstructionImplementation.html" title="JavaRecompilerInstructionImplementation">Instruction implementation</a></b> page will combine all instruction-specific design notes.
+</p>
 <h1><span id="Significant_differences_between_Java_and_C.2B.2B"></span><span class="mw-headline" id="Significant_differences_between_Java_and_C++">Significant differences between Java and C++</span></h1>
 <p>There are few significant differences between the two that need to be taken care of. Some differences are specific to bytecode instructions, some are caused by design decisions in the JVM.
 </p>
@@ -113,10 +115,10 @@ Transclusion expansion time report (%,ms,calls,template)
 100.00%    0.000      1 -total
 -->
 
-<!-- Saved in parser cache with key bitnami_mediawiki:pcache:idhash:7-0!canonical and timestamp 20220129233758 and revision id 42. Serialized with JSON.
+<!-- Saved in parser cache with key bitnami_mediawiki:pcache:idhash:7-0!canonical and timestamp 20220130182108 and revision id 44. Serialized with JSON.
  -->
 </div>
-<div class="printfooter">Retrieved from "<a dir="ltr" href="http://192.168.0.42:81/wiki/index.php?title=JavaRecompiler&amp;oldid=42">http://192.168.0.42:81/wiki/index.php?title=JavaRecompiler&amp;oldid=42</a>"</div></div>
+<div class="printfooter">Retrieved from "<a dir="ltr" href="http://192.168.0.42:81/wiki/index.php?title=JavaRecompiler&amp;oldid=44">http://192.168.0.42:81/wiki/index.php?title=JavaRecompiler&amp;oldid=44</a>"</div></div>
 		<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>
 	</div>
 </div>
@@ -124,7 +126,7 @@ Transclusion expansion time report (%,ms,calls,template)
 
 <footer id="footer" class="mw-footer" role="contentinfo" >
 	<ul id="footer-info" >
-	<li id="footer-info-lastmod"> This page was last edited on 29 January 2022, at 23:37.</li>
+	<li id="footer-info-lastmod"> This page was last edited on 30 January 2022, at 17:57.</li>
 </ul>
 
 	<ul id="footer-places" >
@@ -140,5 +142,5 @@ Transclusion expansion time report (%,ms,calls,template)
 </footer>
 
 
-<script>(RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgPageParseReport":{"limitreport":{"cputime":"0.016","walltime":"0.014","ppvisitednodes":{"value":30,"limit":1000000},"postexpandincludesize":{"value":0,"limit":2097152},"templateargumentsize":{"value":0,"limit":2097152},"expansiondepth":{"value":2,"limit":40},"expensivefunctioncount":{"value":0,"limit":100},"unstrip-depth":{"value":0,"limit":20},"unstrip-size":{"value":0,"limit":5000000},"timingprofile":["100.00%    0.000      1 -total"]},"cachereport":{"timestamp":"20220129233758","ttl":86400,"transientcontent":false}}});mw.config.set({"wgBackendResponseTime":96});});</script>
+<script>(RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgPageParseReport":{"limitreport":{"cputime":"0.016","walltime":"0.016","ppvisitednodes":{"value":31,"limit":1000000},"postexpandincludesize":{"value":0,"limit":2097152},"templateargumentsize":{"value":0,"limit":2097152},"expansiondepth":{"value":2,"limit":40},"expensivefunctioncount":{"value":0,"limit":100},"unstrip-depth":{"value":0,"limit":20},"unstrip-size":{"value":0,"limit":5000000},"timingprofile":["100.00%    0.000      1 -total"]},"cachereport":{"timestamp":"20220130182108","ttl":86400,"transientcontent":false}}});mw.config.set({"wgBackendResponseTime":189});});</script>
 </body></html>
