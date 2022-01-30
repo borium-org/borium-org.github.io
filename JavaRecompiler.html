@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <title>JavaRecompiler - Borium</title>
-<script>document.documentElement.className="client-js";RLCONF={"wgBreakFrames":!1,"wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgRequestId":"e7b2b87acf75feedbf154958","wgCSPNonce":!1,"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":!1,"wgNamespaceNumber":0,"wgPageName":"JavaRecompiler","wgTitle":"JavaRecompiler","wgCurRevisionId":38,"wgRevisionId":38,"wgArticleId":7,"wgIsArticle":!0,"wgIsRedirect":!1,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgRelevantPageName":"JavaRecompiler","wgRelevantArticleId":7,"wgIsProbablyEditable":!0,"wgRelevantPageIsProbablyEditable":!0,"wgRestrictionEdit":[],"wgRestrictionMove":[]};RLSTATE={"site.styles":"ready","noscript":"ready","user.styles":"ready","user":"ready",
+<script>document.documentElement.className="client-js";RLCONF={"wgBreakFrames":!1,"wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgRequestId":"3b9c502ff350c10bc6880ca5","wgCSPNonce":!1,"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":!1,"wgNamespaceNumber":0,"wgPageName":"JavaRecompiler","wgTitle":"JavaRecompiler","wgCurRevisionId":42,"wgRevisionId":42,"wgArticleId":7,"wgIsArticle":!0,"wgIsRedirect":!1,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgRelevantPageName":"JavaRecompiler","wgRelevantArticleId":7,"wgIsProbablyEditable":!0,"wgRelevantPageIsProbablyEditable":!0,"wgRestrictionEdit":[],"wgRestrictionMove":[]};RLSTATE={"site.styles":"ready","noscript":"ready","user.styles":"ready","user":"ready",
 "user.options":"loading","skins.vector.styles.legacy":"ready"};RLPAGEMODULES=["site","mediawiki.page.ready","mediawiki.toc","skins.vector.legacy.js"];</script>
 <script>(RLQ=window.RLQ||[]).push(function(){mw.loader.implement("user.options@1hzgi",function($,jQuery,require,module){/*@nomin*/mw.user.tokens.set({"patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});
 });});</script>
@@ -42,13 +42,10 @@
 <li class="toclevel-2 tocsection-6"><a href="JavaRecompiler.html#Garbage_collection"><span class="tocnumber">4.2</span> <span class="toctext">Garbage collection</span></a></li>
 <li class="toclevel-2 tocsection-7"><a href="JavaRecompiler.html#Stack-allocated_objects"><span class="tocnumber">4.3</span> <span class="toctext">Stack-allocated objects</span></a></li>
 <li class="toclevel-2 tocsection-8"><a href="JavaRecompiler.html#Passing_objects_by_value"><span class="tocnumber">4.4</span> <span class="toctext">Passing objects by value</span></a></li>
-<li class="toclevel-2 tocsection-9"><a href="JavaRecompiler.html#Instruction_CHECKCAST"><span class="tocnumber">4.5</span> <span class="toctext">Instruction CHECKCAST</span></a></li>
-<li class="toclevel-2 tocsection-10"><a href="JavaRecompiler.html#Instruction_INVOKEINTERFACE"><span class="tocnumber">4.6</span> <span class="toctext">Instruction INVOKEINTERFACE</span></a></li>
-<li class="toclevel-2 tocsection-11"><a href="JavaRecompiler.html#Instructions_MONITORENTER_and_MONITOREXIT"><span class="tocnumber">4.7</span> <span class="toctext">Instructions MONITORENTER and MONITOREXIT</span></a></li>
-<li class="toclevel-2 tocsection-12"><a href="JavaRecompiler.html#Runtime_library_objects"><span class="tocnumber">4.8</span> <span class="toctext">Runtime library objects</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="JavaRecompiler.html#Runtime_library_objects"><span class="tocnumber">4.5</span> <span class="toctext">Runtime library objects</span></a></li>
 </ul>
 </li>
-<li class="toclevel-1 tocsection-13"><a href="JavaRecompiler.html#Implementation_notes"><span class="tocnumber">5</span> <span class="toctext">Implementation notes</span></a></li>
+<li class="toclevel-1 tocsection-10"><a href="JavaRecompiler.html#Implementation_notes"><span class="tocnumber">5</span> <span class="toctext">Implementation notes</span></a></li>
 </ul>
 </div>
 
@@ -104,16 +101,6 @@
 </p><p>Java does not support passing objects by value. The Java code would have to use an intermediate, possibly generic, object that contains the copy of object to be passed as value. The called function will take this wrapped object and will unwrap it internally for the called function. The wrapper is necessary so that for each pass by value new object is created instead of old object being passed around multiple times.
 </p><p>However, this wrapping and unwrapping must be undone when C++ code is being generated. We'll deal with this when the time is right.
 </p>
-<h2><span class="mw-headline" id="Instruction_CHECKCAST">Instruction CHECKCAST</span></h2>
-<p>CHECKCAST is used to verify if object is of specific type. C++ RTTI does not have enough information to determine this, so extra information is necessary in each object. This information can be auto-generated by the recompiler.
-</p>
-<h2><span class="mw-headline" id="Instruction_INVOKEINTERFACE">Instruction INVOKEINTERFACE</span></h2>
-<p>INVOKEINTERFACE is used to invoke a method that is part of the class and part of an interface. C++ may be able to emulate this through abstract base class. Multiple inheritance would not be an issue because Java interfaces do not add fields to the derived class, and methods usually don't conflict with each other.
-</p><p>We'll solve this issue when we get there.
-</p>
-<h2><span class="mw-headline" id="Instructions_MONITORENTER_and_MONITOREXIT">Instructions MONITORENTER and MONITOREXIT</span></h2>
-<p>No reason to predict doom yet. We'll solve this issue when we get there.
-</p>
 <h2><span class="mw-headline" id="Runtime_library_objects">Runtime library objects</span></h2>
 <p>Many objects in java.lang and other java.x namespaces are performing special functions that are not easily convertible from raw Java to C++. These objects, Thread and String for example, will be manually implemented and not converted from Java source code.
 </p>
@@ -126,10 +113,10 @@ Transclusion expansion time report (%,ms,calls,template)
 100.00%    0.000      1 -total
 -->
 
-<!-- Saved in parser cache with key bitnami_mediawiki:pcache:idhash:7-0!canonical and timestamp 20220129065952 and revision id 38. Serialized with JSON.
+<!-- Saved in parser cache with key bitnami_mediawiki:pcache:idhash:7-0!canonical and timestamp 20220129233758 and revision id 42. Serialized with JSON.
  -->
 </div>
-<div class="printfooter">Retrieved from "<a dir="ltr" href="http://192.168.0.42:81/wiki/index.php?title=JavaRecompiler&amp;oldid=38">http://192.168.0.42:81/wiki/index.php?title=JavaRecompiler&amp;oldid=38</a>"</div></div>
+<div class="printfooter">Retrieved from "<a dir="ltr" href="http://192.168.0.42:81/wiki/index.php?title=JavaRecompiler&amp;oldid=42">http://192.168.0.42:81/wiki/index.php?title=JavaRecompiler&amp;oldid=42</a>"</div></div>
 		<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>
 	</div>
 </div>
@@ -137,7 +124,7 @@ Transclusion expansion time report (%,ms,calls,template)
 
 <footer id="footer" class="mw-footer" role="contentinfo" >
 	<ul id="footer-info" >
-	<li id="footer-info-lastmod"> This page was last edited on 29 January 2022, at 06:58.</li>
+	<li id="footer-info-lastmod"> This page was last edited on 29 January 2022, at 23:37.</li>
 </ul>
 
 	<ul id="footer-places" >
@@ -153,5 +140,5 @@ Transclusion expansion time report (%,ms,calls,template)
 </footer>
 
 
-<script>(RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgPageParseReport":{"limitreport":{"cputime":"0.016","walltime":"0.012","ppvisitednodes":{"value":39,"limit":1000000},"postexpandincludesize":{"value":0,"limit":2097152},"templateargumentsize":{"value":0,"limit":2097152},"expansiondepth":{"value":2,"limit":40},"expensivefunctioncount":{"value":0,"limit":100},"unstrip-depth":{"value":0,"limit":20},"unstrip-size":{"value":0,"limit":5000000},"timingprofile":["100.00%    0.000      1 -total"]},"cachereport":{"timestamp":"20220129065952","ttl":86400,"transientcontent":false}}});mw.config.set({"wgBackendResponseTime":147});});</script>
+<script>(RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgPageParseReport":{"limitreport":{"cputime":"0.016","walltime":"0.014","ppvisitednodes":{"value":30,"limit":1000000},"postexpandincludesize":{"value":0,"limit":2097152},"templateargumentsize":{"value":0,"limit":2097152},"expansiondepth":{"value":2,"limit":40},"expensivefunctioncount":{"value":0,"limit":100},"unstrip-depth":{"value":0,"limit":20},"unstrip-size":{"value":0,"limit":5000000},"timingprofile":["100.00%    0.000      1 -total"]},"cachereport":{"timestamp":"20220129233758","ttl":86400,"transientcontent":false}}});mw.config.set({"wgBackendResponseTime":106});});</script>
 </body></html>
