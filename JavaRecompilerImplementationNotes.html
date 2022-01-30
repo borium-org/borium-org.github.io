@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <title>JavaRecompilerImplementationNotes - Borium</title>
-<script>document.documentElement.className="client-js";RLCONF={"wgBreakFrames":!1,"wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgRequestId":"1a07c87639d61cf2c586d8a3","wgCSPNonce":!1,"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":!1,"wgNamespaceNumber":0,"wgPageName":"JavaRecompilerImplementationNotes","wgTitle":"JavaRecompilerImplementationNotes","wgCurRevisionId":43,"wgRevisionId":43,"wgArticleId":8,"wgIsArticle":!0,"wgIsRedirect":!1,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgRelevantPageName":"JavaRecompilerImplementationNotes","wgRelevantArticleId":8,"wgIsProbablyEditable":!0,"wgRelevantPageIsProbablyEditable":!0,"wgRestrictionEdit":[],"wgRestrictionMove":[]};RLSTATE={"site.styles":"ready",
+<script>document.documentElement.className="client-js";RLCONF={"wgBreakFrames":!1,"wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgRequestId":"1ed6f97ba4361aab0f54c1b1","wgCSPNonce":!1,"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":!1,"wgNamespaceNumber":0,"wgPageName":"JavaRecompilerImplementationNotes","wgTitle":"JavaRecompilerImplementationNotes","wgCurRevisionId":51,"wgRevisionId":51,"wgArticleId":8,"wgIsArticle":!0,"wgIsRedirect":!1,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgRelevantPageName":"JavaRecompilerImplementationNotes","wgRelevantArticleId":8,"wgIsProbablyEditable":!0,"wgRelevantPageIsProbablyEditable":!0,"wgRestrictionEdit":[],"wgRestrictionMove":[]};RLSTATE={"site.styles":"ready",
 "noscript":"ready","user.styles":"ready","user":"ready","user.options":"loading","skins.vector.styles.legacy":"ready"};RLPAGEMODULES=["site","mediawiki.page.ready","skins.vector.legacy.js"];</script>
 <script>(RLQ=window.RLQ||[]).push(function(){mw.loader.implement("user.options@1hzgi",function($,jQuery,require,module){/*@nomin*/mw.user.tokens.set({"patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});
 });});</script>
@@ -29,8 +29,11 @@
 		<div id="jump-to-nav"></div>
 		<a class="mw-jump-link" href="JavaRecompilerImplementationNotes.html#mw-head">Jump to navigation</a>
 		<a class="mw-jump-link" href="JavaRecompilerImplementationNotes.html#searchInput">Jump to search</a>
-		<div id="mw-content-text" class="mw-body-content mw-content-ltr" lang="en" dir="ltr"><div class="mw-parser-output"><p><strong><a href="JavaRecompiler.html" title="JavaRecompiler">Java Recompiler</a> Implementation Notes</strong>
+		<div id="mw-content-text" class="mw-body-content mw-content-ltr" lang="en" dir="ltr"><div class="mw-parser-output"><p><strong>Java Recompiler Implementation Notes</strong>
 </p><p>First, before going into depths of JNI and native code, I will implement recompiler using the same recompiler as a test app. The advantage of doing this is that recompiler is pure Java, and it is easy to verify generated C++ code by single-stepping through both recompiler and output projects at same time.
+</p><p><b><a href="JavaRecompilerInstructionImplementation.html" title="JavaRecompilerInstructionImplementation">Instruction implementation</a></b>
+</p><p><br />
+<a href="JavaRecompiler.html" title="JavaRecompiler">Java Recompiler</a>
 </p>
 
 <!--
@@ -38,10 +41,10 @@ Transclusion expansion time report (%,ms,calls,template)
 100.00%    0.000      1 -total
 -->
 
-<!-- Saved in parser cache with key bitnami_mediawiki:pcache:idhash:8-0!canonical and timestamp 20220130175441 and revision id 43. Serialized with JSON.
+<!-- Saved in parser cache with key bitnami_mediawiki:pcache:idhash:8-0!canonical and timestamp 20220130192307 and revision id 51. Serialized with JSON.
  -->
 </div>
-<div class="printfooter">Retrieved from "<a dir="ltr" href="http://192.168.0.42:81/wiki/index.php?title=JavaRecompilerImplementationNotes&amp;oldid=43">http://192.168.0.42:81/wiki/index.php?title=JavaRecompilerImplementationNotes&amp;oldid=43</a>"</div></div>
+<div class="printfooter">Retrieved from "<a dir="ltr" href="http://192.168.0.42:81/wiki/index.php?title=JavaRecompilerImplementationNotes&amp;oldid=51">http://192.168.0.42:81/wiki/index.php?title=JavaRecompilerImplementationNotes&amp;oldid=51</a>"</div></div>
 		<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>
 	</div>
 </div>
@@ -49,7 +52,7 @@ Transclusion expansion time report (%,ms,calls,template)
 
 <footer id="footer" class="mw-footer" role="contentinfo" >
 	<ul id="footer-info" >
-	<li id="footer-info-lastmod"> This page was last edited on 30 January 2022, at 17:54.</li>
+	<li id="footer-info-lastmod"> This page was last edited on 30 January 2022, at 19:23.</li>
 </ul>
 
 	<ul id="footer-places" >
@@ -65,5 +68,5 @@ Transclusion expansion time report (%,ms,calls,template)
 </footer>
 
 
-<script>(RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgPageParseReport":{"limitreport":{"cputime":"0.016","walltime":"0.012","ppvisitednodes":{"value":1,"limit":1000000},"postexpandincludesize":{"value":0,"limit":2097152},"templateargumentsize":{"value":0,"limit":2097152},"expansiondepth":{"value":1,"limit":40},"expensivefunctioncount":{"value":0,"limit":100},"unstrip-depth":{"value":0,"limit":20},"unstrip-size":{"value":0,"limit":5000000},"timingprofile":["100.00%    0.000      1 -total"]},"cachereport":{"timestamp":"20220130175441","ttl":86400,"transientcontent":false}}});mw.config.set({"wgBackendResponseTime":130});});</script>
+<script>(RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgPageParseReport":{"limitreport":{"cputime":"0.000","walltime":"0.003","ppvisitednodes":{"value":1,"limit":1000000},"postexpandincludesize":{"value":0,"limit":2097152},"templateargumentsize":{"value":0,"limit":2097152},"expansiondepth":{"value":1,"limit":40},"expensivefunctioncount":{"value":0,"limit":100},"unstrip-depth":{"value":0,"limit":20},"unstrip-size":{"value":0,"limit":5000000},"timingprofile":["100.00%    0.000      1 -total"]},"cachereport":{"timestamp":"20220130192307","ttl":86400,"transientcontent":false}}});mw.config.set({"wgBackendResponseTime":127});});</script>
 </body></html>
