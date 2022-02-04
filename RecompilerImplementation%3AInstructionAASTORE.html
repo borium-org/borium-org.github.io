@@ -26,7 +26,12 @@
 		<a class="mw-jump-link" href="RecompilerImplementation%253AInstructionAASTORE.html#mw-head">Jump to navigation</a>
 		<a class="mw-jump-link" href="RecompilerImplementation%253AInstructionAASTORE.html#searchInput">Jump to search</a>
 		<div id="mw-content-text" class="mw-body-content mw-content-ltr" lang="en" dir="ltr"><div class="mw-parser-output"><p><strong>Instruction AASTORE implementation</strong>
-</p><p>AASTORE instruction stores an expression into an array element.
+</p><p><a href="Main_Page.html" title="Main Page">Main Page</a>
+</p><p><a href="JavaRecompiler.html" title="JavaRecompiler">Java Recompiler</a>
+</p><p><a href="JavaRecompilerInstructionImplementation.html" title="JavaRecompilerInstructionImplementation">Java Recompiler: Instruction Implementation</a>
+</p>
+<hr />
+<p>AASTORE instruction stores an expression into an array element.
 </p><p>AASTORE parameters in popping order:
 </p>
 <ol><li>Value</li>
@@ -44,9 +49,6 @@
 <li>AASTORE</li></ol></li>
 <li>ASTORE local</li></ol>
 <p>String array initializer is generated in a separately scoped block where temporary variable is used to reference the string array. All initializers use the temporary variable to assign their string value into an array element. At the end of the block, when ASTORE is being generated, the temporary variable is stored into the target of ASTORE. All this special handling is initiated when ANEWARRAY instruction allocates a string array.
-</p><p><br />
-</p><p><a href="JavaRecompilerInstructionImplementation.html" title="JavaRecompilerInstructionImplementation">Instruction implementation</a>
-</p><p><a href="JavaRecompiler.html" title="JavaRecompiler">Java Recompiler</a>
 </p>
 
 <!--
@@ -55,7 +57,7 @@ Transclusion expansion time report (%,ms,calls,template)
 -->
 
 </div>
-<div class="printfooter">Retrieved from "<a dir="ltr" href="http://192.168.0.42:81/wiki/index.php?title=RecompilerImplementation:InstructionAASTORE&amp;oldid=76">http://192.168.0.42:81/wiki/index.php?title=RecompilerImplementation:InstructionAASTORE&amp;oldid=76</a>"</div></div>
+<div class="printfooter">Retrieved from "<a dir="ltr" href="http://192.168.0.42:81/wiki/index.php?title=RecompilerImplementation:InstructionAASTORE&amp;oldid=90">http://192.168.0.42:81/wiki/index.php?title=RecompilerImplementation:InstructionAASTORE&amp;oldid=90</a>"</div></div>
 		<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>
 	</div>
 </div>
@@ -63,7 +65,7 @@ Transclusion expansion time report (%,ms,calls,template)
 
 <footer id="footer" class="mw-footer" role="contentinfo" >
 	<ul id="footer-info" >
-	<li id="footer-info-lastmod"> This page was last edited on 2 February 2022, at 05:46.</li>
+	<li id="footer-info-lastmod"> This page was last edited on 4 February 2022, at 18:05.</li>
 </ul>
 
 	<ul id="footer-places" >

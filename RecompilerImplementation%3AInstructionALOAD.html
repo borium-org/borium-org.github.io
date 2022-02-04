@@ -26,7 +26,12 @@
 		<a class="mw-jump-link" href="RecompilerImplementation%253AInstructionALOAD.html#mw-head">Jump to navigation</a>
 		<a class="mw-jump-link" href="RecompilerImplementation%253AInstructionALOAD.html#searchInput">Jump to search</a>
 		<div id="mw-content-text" class="mw-body-content mw-content-ltr" lang="en" dir="ltr"><div class="mw-parser-output"><p><strong>Instruction ALOAD implementation</strong>
-</p><p>There are three variants of the ALOAD instruction:
+</p><p><a href="Main_Page.html" title="Main Page">Main Page</a>
+</p><p><a href="JavaRecompiler.html" title="JavaRecompiler">Java Recompiler</a>
+</p><p><a href="JavaRecompilerInstructionImplementation.html" title="JavaRecompilerInstructionImplementation">Java Recompiler: Instruction Implementation</a>
+</p>
+<hr />
+<p>There are three variants of the ALOAD instruction:
 </p>
 <ol><li>Constant embedded into instruction code: ALOAD 0...ALOAD 3</li>
 <li>Single byte constant: ALOAD n</li>
@@ -36,9 +41,6 @@
 <ol><li>Index is within locals range.</li>
 <li>Local at that index must be defined. In non-static methods index 0 is 'this' reference. Some locals are defined through parameters that are passed into the method. Local variables are initially not defined, they get defined when ASTORE instructions are executed.</li></ol>
 <p>If these conditions are satisfied, the local variable is pushed to the <b><a href="RecompilerImplementation%253AOperandStack.html" title="RecompilerImplementation:OperandStack">operand stack</a></b>.
-</p><p><br />
-</p><p><a href="JavaRecompilerInstructionImplementation.html" title="JavaRecompilerInstructionImplementation">Instruction implementation</a>
-</p><p><a href="JavaRecompiler.html" title="JavaRecompiler">Java Recompiler</a>
 </p>
 
 <!--
@@ -47,7 +49,7 @@ Transclusion expansion time report (%,ms,calls,template)
 -->
 
 </div>
-<div class="printfooter">Retrieved from "<a dir="ltr" href="http://192.168.0.42:81/wiki/index.php?title=RecompilerImplementation:InstructionALOAD&amp;oldid=56">http://192.168.0.42:81/wiki/index.php?title=RecompilerImplementation:InstructionALOAD&amp;oldid=56</a>"</div></div>
+<div class="printfooter">Retrieved from "<a dir="ltr" href="http://192.168.0.42:81/wiki/index.php?title=RecompilerImplementation:InstructionALOAD&amp;oldid=92">http://192.168.0.42:81/wiki/index.php?title=RecompilerImplementation:InstructionALOAD&amp;oldid=92</a>"</div></div>
 		<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>
 	</div>
 </div>
@@ -55,7 +57,7 @@ Transclusion expansion time report (%,ms,calls,template)
 
 <footer id="footer" class="mw-footer" role="contentinfo" >
 	<ul id="footer-info" >
-	<li id="footer-info-lastmod"> This page was last edited on 30 January 2022, at 19:27.</li>
+	<li id="footer-info-lastmod"> This page was last edited on 4 February 2022, at 18:06.</li>
 </ul>
 
 	<ul id="footer-places" >
