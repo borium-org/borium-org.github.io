@@ -2,41 +2,42 @@
 <html class="client-nojs" lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8"/>
-<title>RecompilerImplementation:InstructionAALOAD - Borium</title>
+<title>RecompilerImplementation:InstructionISTORE - Borium</title>
 <link rel="stylesheet" href="load.php@lang=en&amp;modules=skins.vector.styles.legacy&amp;only=styles&amp;skin=vector.css"/>
 <script async="" src="load.php@lang=en&amp;modules=startup&amp;only=scripts&amp;raw=1&amp;skin=vector"></script>
 <meta name="generator" content="MediaWiki 1.37.1"/>
 <meta name="format-detection" content="telephone=no"/>
 <link rel="shortcut icon" href="favicon.ico"/>
 </head>
-<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject mw-editable page-RecompilerImplementation_InstructionAALOAD rootpage-RecompilerImplementation_InstructionAALOAD skin-vector action-view skin-vector-legacy"><div id="mw-page-base" class="noprint"></div>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject mw-editable page-RecompilerImplementation_InstructionISTORE rootpage-RecompilerImplementation_InstructionISTORE skin-vector action-view skin-vector-legacy"><div id="mw-page-base" class="noprint"></div>
 <div id="mw-head-base" class="noprint"></div>
 <div id="content" class="mw-body" role="main">
 	<a id="top"></a>
 	<div id="siteNotice"></div>
 	<div class="mw-indicators">
 	</div>
-	<h1 id="firstHeading" class="firstHeading" >Recompiler Implementation: Instruction AALOAD</h1>
+	<h1 id="firstHeading" class="firstHeading" >Recompiler Implementation: Instruction ISTORE</h1>
 	<div id="bodyContent" class="vector-body">
 		<div id="siteSub" class="noprint">From Borium</div>
 		<div id="contentSub"></div>
 		<div id="contentSub2"></div>
 		
 		<div id="jump-to-nav"></div>
-		<a class="mw-jump-link" href="RecompilerImplementation%253AInstructionAALOAD.html#mw-head">Jump to navigation</a>
-		<a class="mw-jump-link" href="RecompilerImplementation%253AInstructionAALOAD.html#searchInput">Jump to search</a>
-		<div id="mw-content-text" class="mw-body-content mw-content-ltr" lang="en" dir="ltr"><div class="mw-parser-output"><p><strong>Instruction AALOAD implementation</strong>
+		<a class="mw-jump-link" href="RecompilerImplementation%253AInstructionISTORE.html#mw-head">Jump to navigation</a>
+		<a class="mw-jump-link" href="RecompilerImplementation%253AInstructionISTORE.html#searchInput">Jump to search</a>
+		<div id="mw-content-text" class="mw-body-content mw-content-ltr" lang="en" dir="ltr"><div class="mw-parser-output"><p><strong>Instruction ISTORE implementation</strong>
 </p><p><a href="Main_Page.html" title="Main Page">Main Page</a>
 </p><p><a href="JavaRecompiler.html" title="JavaRecompiler">Java Recompiler</a>
 </p><p><a href="JavaRecompilerInstructionImplementation.html" title="JavaRecompilerInstructionImplementation">Java Recompiler: Instruction Implementation</a>
 </p>
 <hr />
-<p>AALOAD instruction reads an array element and stores it on the <b><a href="RecompilerImplementation%253AOperandStack.html" title="RecompilerImplementation:OperandStack">operand stack</a></b>.
-</p><p>AALOAD parameters are in popping order:
+<p>There are three variants of the ISTORE instruction:
 </p>
-<ol><li>Index</li>
-<li>Array</li></ol>
-<p>C++ equivalent of Java array is implemented using a pointer to <b>JavaArray</b> instance. Operator [] in C++ cannot be used in this context because it can't be overloaded and compiler will try to use the pointer to JavaArray as an array of pointers. Because of all this the method get() is implemented in the JavaArray to access its elements.
+<ol><li>Constant embedded into instruction code: ISTORE 0...ISTORE 3</li>
+<li>Single byte constant: ISTORE n</li>
+<li>Double byte constant: WIDE ISTORE n</li></ol>
+<p>All these instructions perform the same task: Pop an integer from the <b><a href="RecompilerImplementation%253AOperandStack.html" title="RecompilerImplementation:OperandStack">operand stack</a></b> and store it in a local variable. The only difference is in the way how the index is specified. Index must be within locals range.
+</p><p>If a local variable slot hasn't been used yet, current implementation creates a new local C++ variable in the place where ISTORE instruction is used. This code will fail to compile if there are GOTO instructions that jump past the local variable initialization. This is the case with Java for() loops where code performs the initialization and the jumps to the far end of the loop to verify the condition.
 </p>
 
 <!--
@@ -45,7 +46,7 @@ Transclusion expansion time report (%,ms,calls,template)
 -->
 
 </div>
-<div class="printfooter">Retrieved from "<a dir="ltr" href="http://192.168.0.42:81/wiki/index.php?title=RecompilerImplementation:InstructionAALOAD&amp;oldid=108">http://192.168.0.42:81/wiki/index.php?title=RecompilerImplementation:InstructionAALOAD&amp;oldid=108</a>"</div></div>
+<div class="printfooter">Retrieved from "<a dir="ltr" href="http://192.168.0.42:81/wiki/index.php?title=RecompilerImplementation:InstructionISTORE&amp;oldid=116">http://192.168.0.42:81/wiki/index.php?title=RecompilerImplementation:InstructionISTORE&amp;oldid=116</a>"</div></div>
 		<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>
 	</div>
 </div>
@@ -53,7 +54,7 @@ Transclusion expansion time report (%,ms,calls,template)
 
 <footer id="footer" class="mw-footer" role="contentinfo" >
 	<ul id="footer-info" >
-	<li id="footer-info-lastmod"> This page was last edited on 4 February 2022, at 18:30.</li>
+	<li id="footer-info-lastmod"> This page was last edited on 4 February 2022, at 18:47.</li>
 </ul>
 
 	<ul id="footer-places" >
