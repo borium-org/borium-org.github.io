@@ -33,8 +33,8 @@
 <hr />
 <p>INVOKESPECIAL is used to execute constructors.
 </p><p>All constructors are referenced by their type-erased class type, so for C++ code generation erased types must be restored using other means, the INVOKESPECIAL instruction does not provide enough information for restoring types.
-</p><p>Current implementation supports invoking the base class constructor without parameters from the constructor for this class, or invoking a parameterless constructor for a dynamically allocated object.
-</p><p>Parameters would be determined by parsing the constructor signature, but there are no code sequences where parameters are passed to the constructor, so parameter handling is postponed for now. Only parameterless constructors are supported at this time. Parameterized constructors are easy to add but all in due time.
+</p><p>Parameters to the constructor are parsed using the constructor descriptor and they are popped from <b><a href="RecompilerImplementation%253AOperandStack.html" title="RecompilerImplementation:OperandStack">operand stack</a></b> in right-to-left order.
+</p><p>Code generation is different for super constructor and new constructor. Super constructor invocation is injected into this class constructor definition header, before all references and their tracker objects are initialized. New object constructors are kept inline in the code where the object reference may be used or stored somewhere.
 </p>
 
 <!--
@@ -43,7 +43,7 @@ Transclusion expansion time report (%,ms,calls,template)
 -->
 
 </div>
-<div class="printfooter">Retrieved from "<a dir="ltr" href="http://192.168.0.42:81/wiki/index.php?title=RecompilerImplementation:InstructionINVOKESPECIAL&amp;oldid=100">http://192.168.0.42:81/wiki/index.php?title=RecompilerImplementation:InstructionINVOKESPECIAL&amp;oldid=100</a>"</div></div>
+<div class="printfooter">Retrieved from "<a dir="ltr" href="http://192.168.0.42:81/wiki/index.php?title=RecompilerImplementation:InstructionINVOKESPECIAL&amp;oldid=125">http://192.168.0.42:81/wiki/index.php?title=RecompilerImplementation:InstructionINVOKESPECIAL&amp;oldid=125</a>"</div></div>
 		<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>
 	</div>
 </div>
@@ -51,7 +51,7 @@ Transclusion expansion time report (%,ms,calls,template)
 
 <footer id="footer" class="mw-footer" role="contentinfo" >
 	<ul id="footer-info" >
-	<li id="footer-info-lastmod"> This page was last edited on 4 February 2022, at 18:09.</li>
+	<li id="footer-info-lastmod"> This page was last edited on 6 February 2022, at 00:56.</li>
 </ul>
 
 	<ul id="footer-places" >
