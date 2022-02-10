@@ -29,7 +29,12 @@
 </p><p><a href="JavaRecompiler.html" title="JavaRecompiler">Java Recompiler</a>
 </p><p><a href="Main_Page.html" title="Main Page">Main page</a>
 </p><p>First, before going into depths of JNI and native code, I will implement recompiler using the same recompiler as a test app. The advantage of doing this is that recompiler is pure Java, and it is easy to verify generated C++ code by single-stepping through both recompiler and output projects at same time.
-</p><p><b><a href="JavaRecompilerInstructionImplementation.html" title="JavaRecompilerInstructionImplementation">Instruction implementation</a></b>
+</p>
+<h2><span class="mw-headline" id="Local_variables">Local variables</span></h2>
+<p>Local variable info is provided by LocalVariableTable attribute in Code attribute for the method. The table contains starting PC and length of the valid range for each variable. Multiple variables can occupy same local variable table slot as long as their PC ranges do not overlap.
+</p><p>Starting PC for the variable has an issue: if variable is first assigned using xSTORE instruction, the starting PC for the variable is set to right after that xSTORE instruction. xSTORE instruction generation can't find that local variable because the instruction is just ahead of the range in which variable is available. To work around this issue, starting PC is rolled back by the length of the xSTORE instruction.
+</p><p><br />
+<b><a href="JavaRecompilerInstructionImplementation.html" title="JavaRecompilerInstructionImplementation">Instruction implementation</a></b>
 </p>
 
 <!--
@@ -38,7 +43,7 @@ Transclusion expansion time report (%,ms,calls,template)
 -->
 
 </div>
-<div class="printfooter">Retrieved from "<a dir="ltr" href="http://192.168.0.42:81/wiki/index.php?title=JavaRecompilerImplementationNotes&amp;oldid=84">http://192.168.0.42:81/wiki/index.php?title=JavaRecompilerImplementationNotes&amp;oldid=84</a>"</div></div>
+<div class="printfooter">Retrieved from "<a dir="ltr" href="http://192.168.0.42:81/wiki/index.php?title=JavaRecompilerImplementationNotes&amp;oldid=140">http://192.168.0.42:81/wiki/index.php?title=JavaRecompilerImplementationNotes&amp;oldid=140</a>"</div></div>
 		<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>
 	</div>
 </div>
@@ -46,7 +51,7 @@ Transclusion expansion time report (%,ms,calls,template)
 
 <footer id="footer" class="mw-footer" role="contentinfo" >
 	<ul id="footer-info" >
-	<li id="footer-info-lastmod"> This page was last edited on 4 February 2022, at 17:59.</li>
+	<li id="footer-info-lastmod"> This page was last edited on 7 February 2022, at 05:31.</li>
 </ul>
 
 	<ul id="footer-places" >

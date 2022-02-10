@@ -43,9 +43,10 @@
 <li class="toclevel-2 tocsection-7"><a href="JavaRecompiler.html#Stack-allocated_objects"><span class="tocnumber">4.3</span> <span class="toctext">Stack-allocated objects</span></a></li>
 <li class="toclevel-2 tocsection-8"><a href="JavaRecompiler.html#Passing_objects_by_value"><span class="tocnumber">4.4</span> <span class="toctext">Passing objects by value</span></a></li>
 <li class="toclevel-2 tocsection-9"><a href="JavaRecompiler.html#Runtime_library_objects"><span class="tocnumber">4.5</span> <span class="toctext">Runtime library objects</span></a></li>
+<li class="toclevel-2 tocsection-10"><a href="JavaRecompiler.html#Static_initializers"><span class="tocnumber">4.6</span> <span class="toctext">Static initializers</span></a></li>
 </ul>
 </li>
-<li class="toclevel-1 tocsection-10"><a href="JavaRecompiler.html#Implementation_notes"><span class="tocnumber">5</span> <span class="toctext">Implementation notes</span></a></li>
+<li class="toclevel-1 tocsection-11"><a href="JavaRecompiler.html#Implementation_notes"><span class="tocnumber">5</span> <span class="toctext">Implementation notes</span></a></li>
 </ul>
 </div>
 
@@ -106,8 +107,12 @@
 <h2><span class="mw-headline" id="Runtime_library_objects">Runtime library objects</span></h2>
 <p>Many objects in java.lang and other java.x namespaces are performing special functions that are not easily convertible from raw Java to C++. These objects, Thread and String for example, will be manually implemented and not converted from Java source code.
 </p>
+<h2><span class="mw-headline" id="Static_initializers">Static initializers</span></h2>
+<p>Java classes can have one static initializer which can be used to initialize static fields of the class before any instance of that class is created. Since converted C++ class does not have a concept of dynamic class loading these initializers are not invoked in same way as Java would. The added complexity is that if static fields are read or written, static initializers would be executed before the field is accessed. GETSTATIC and PUTSTATIC would have to perform static initialization of the class if necessary, and only once.
+</p>
 <h1><span class="mw-headline" id="Implementation_notes">Implementation notes</span></h1>
 <p>Recompiler implementation notes are on <b><a href="JavaRecompilerImplementationNotes.html" title="JavaRecompilerImplementationNotes">Implementation Notes</a></b> page.
+</p><p><b><a href="JavaRecompilerTodoList.html" title="JavaRecompilerTodoList">To-do list</a></b>
 </p>
 
 <!--
@@ -116,7 +121,7 @@ Transclusion expansion time report (%,ms,calls,template)
 -->
 
 </div>
-<div class="printfooter">Retrieved from "<a dir="ltr" href="http://192.168.0.42:81/wiki/index.php?title=JavaRecompiler&amp;oldid=105">http://192.168.0.42:81/wiki/index.php?title=JavaRecompiler&amp;oldid=105</a>"</div></div>
+<div class="printfooter">Retrieved from "<a dir="ltr" href="http://192.168.0.42:81/wiki/index.php?title=JavaRecompiler&amp;oldid=139">http://192.168.0.42:81/wiki/index.php?title=JavaRecompiler&amp;oldid=139</a>"</div></div>
 		<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>
 	</div>
 </div>
@@ -124,7 +129,7 @@ Transclusion expansion time report (%,ms,calls,template)
 
 <footer id="footer" class="mw-footer" role="contentinfo" >
 	<ul id="footer-info" >
-	<li id="footer-info-lastmod"> This page was last edited on 4 February 2022, at 18:11.</li>
+	<li id="footer-info-lastmod"> This page was last edited on 7 February 2022, at 05:26.</li>
 </ul>
 
 	<ul id="footer-places" >

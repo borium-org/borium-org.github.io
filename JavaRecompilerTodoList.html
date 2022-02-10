@@ -2,43 +2,38 @@
 <html class="client-nojs" lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8"/>
-<title>RecompilerImplementation:InstructionLDC - Borium</title>
+<title>JavaRecompilerTodoList - Borium</title>
 <link rel="stylesheet" href="load.php@lang=en&amp;modules=skins.vector.styles.legacy&amp;only=styles&amp;skin=vector.css"/>
 <script async="" src="load.php@lang=en&amp;modules=startup&amp;only=scripts&amp;raw=1&amp;skin=vector"></script>
 <meta name="generator" content="MediaWiki 1.37.1"/>
 <meta name="format-detection" content="telephone=no"/>
 <link rel="shortcut icon" href="favicon.ico"/>
 </head>
-<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject mw-editable page-RecompilerImplementation_InstructionLDC rootpage-RecompilerImplementation_InstructionLDC skin-vector action-view skin-vector-legacy"><div id="mw-page-base" class="noprint"></div>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject mw-editable page-JavaRecompilerTodoList rootpage-JavaRecompilerTodoList skin-vector action-view skin-vector-legacy"><div id="mw-page-base" class="noprint"></div>
 <div id="mw-head-base" class="noprint"></div>
 <div id="content" class="mw-body" role="main">
 	<a id="top"></a>
 	<div id="siteNotice"></div>
 	<div class="mw-indicators">
 	</div>
-	<h1 id="firstHeading" class="firstHeading" >Recompiler Implementation: Instruction LDC</h1>
+	<h1 id="firstHeading" class="firstHeading" >Java Recompiler Todo List</h1>
 	<div id="bodyContent" class="vector-body">
 		<div id="siteSub" class="noprint">From Borium</div>
 		<div id="contentSub"></div>
 		<div id="contentSub2"></div>
 		
 		<div id="jump-to-nav"></div>
-		<a class="mw-jump-link" href="RecompilerImplementation%253AInstructionLDC.html#mw-head">Jump to navigation</a>
-		<a class="mw-jump-link" href="RecompilerImplementation%253AInstructionLDC.html#searchInput">Jump to search</a>
-		<div id="mw-content-text" class="mw-body-content mw-content-ltr" lang="en" dir="ltr"><div class="mw-parser-output"><p><strong>Instruction LDC implementation</strong>
-</p><p><a href="Main_Page.html" title="Main Page">Main Page</a>
+		<a class="mw-jump-link" href="JavaRecompilerTodoList.html#mw-head">Jump to navigation</a>
+		<a class="mw-jump-link" href="JavaRecompilerTodoList.html#searchInput">Jump to search</a>
+		<div id="mw-content-text" class="mw-body-content mw-content-ltr" lang="en" dir="ltr"><div class="mw-parser-output"><p><strong>Java Recompiler To-Do List</strong>
 </p><p><a href="JavaRecompiler.html" title="JavaRecompiler">Java Recompiler</a>
-</p><p><a href="JavaRecompilerInstructionImplementation.html" title="JavaRecompilerInstructionImplementation">Java Recompiler: Instruction Implementation</a>
+</p><p><a href="Main_Page.html" title="Main Page">Main page</a>
+</p><p>This is a list of issues that need resolution but are not being worked on yet. This does not include 'implement some 50 more missing instructions', it just contains important things to deal with when time is right, but they are important enough to be listed so they don't fall through the cracks.
 </p>
-<hr />
-<p>LDC is used to push a constant from the constant pool to <b><a href="RecompilerImplementation%253AOperandStack.html" title="RecompilerImplementation:OperandStack">operand stack</a></b>. Constant index is an unsigned 8-bit value in the instruction.
-</p><p>Supported types are:
-</p>
-<ol><li>Float</li>
-<li>Integer</li>
-<li>String</li></ol>
-<p>There are other possibilities for the constant, they will assert if encountered.
-</p>
+<ol><li>PUTFIELD: PutField() function similar to GetField().</li>
+<li>NEW: A similar function to invoke class initializer before creating an instance of the class.</li>
+<li>ClassInit: Create one if class does not provide it.</li>
+<li>RTTI for CHECKCAST.</li></ol>
 
 <!--
 Transclusion expansion time report (%,ms,calls,template)
@@ -46,7 +41,7 @@ Transclusion expansion time report (%,ms,calls,template)
 -->
 
 </div>
-<div class="printfooter">Retrieved from "<a dir="ltr" href="http://192.168.0.42:81/wiki/index.php?title=RecompilerImplementation:InstructionLDC&amp;oldid=136">http://192.168.0.42:81/wiki/index.php?title=RecompilerImplementation:InstructionLDC&amp;oldid=136</a>"</div></div>
+<div class="printfooter">Retrieved from "<a dir="ltr" href="http://192.168.0.42:81/wiki/index.php?title=JavaRecompilerTodoList&amp;oldid=144">http://192.168.0.42:81/wiki/index.php?title=JavaRecompilerTodoList&amp;oldid=144</a>"</div></div>
 		<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>
 	</div>
 </div>
@@ -54,7 +49,7 @@ Transclusion expansion time report (%,ms,calls,template)
 
 <footer id="footer" class="mw-footer" role="contentinfo" >
 	<ul id="footer-info" >
-	<li id="footer-info-lastmod"> This page was last edited on 6 February 2022, at 22:13.</li>
+	<li id="footer-info-lastmod"> This page was last edited on 10 February 2022, at 06:33.</li>
 </ul>
 
 	<ul id="footer-places" >
