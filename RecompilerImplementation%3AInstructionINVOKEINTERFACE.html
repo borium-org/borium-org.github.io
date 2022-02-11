@@ -2,38 +2,42 @@
 <html class="client-nojs" lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8"/>
-<title>RecompilerImplementation:InstructionINVOKEVIRTUAL - Borium</title>
+<title>RecompilerImplementation:InstructionINVOKEINTERFACE - Borium</title>
 <link rel="stylesheet" href="load.php@lang=en&amp;modules=skins.vector.styles.legacy&amp;only=styles&amp;skin=vector.css"/>
 <script async="" src="load.php@lang=en&amp;modules=startup&amp;only=scripts&amp;raw=1&amp;skin=vector"></script>
 <meta name="generator" content="MediaWiki 1.37.1"/>
 <meta name="format-detection" content="telephone=no"/>
 <link rel="shortcut icon" href="favicon.ico"/>
 </head>
-<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject mw-editable page-RecompilerImplementation_InstructionINVOKEVIRTUAL rootpage-RecompilerImplementation_InstructionINVOKEVIRTUAL skin-vector action-view skin-vector-legacy"><div id="mw-page-base" class="noprint"></div>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject mw-editable page-RecompilerImplementation_InstructionINVOKEINTERFACE rootpage-RecompilerImplementation_InstructionINVOKEINTERFACE skin-vector action-view skin-vector-legacy"><div id="mw-page-base" class="noprint"></div>
 <div id="mw-head-base" class="noprint"></div>
 <div id="content" class="mw-body" role="main">
 	<a id="top"></a>
 	<div id="siteNotice"></div>
 	<div class="mw-indicators">
 	</div>
-	<h1 id="firstHeading" class="firstHeading" >Recompiler Implementation: Instruction INVOKEVIRTUAL</h1>
+	<h1 id="firstHeading" class="firstHeading" >Recompiler Implementation: Instruction INVOKEINTERFACE</h1>
 	<div id="bodyContent" class="vector-body">
 		<div id="siteSub" class="noprint">From Borium</div>
 		<div id="contentSub"></div>
 		<div id="contentSub2"></div>
 		
 		<div id="jump-to-nav"></div>
-		<a class="mw-jump-link" href="RecompilerImplementation%253AInstructionINVOKEVIRTUAL.html#mw-head">Jump to navigation</a>
-		<a class="mw-jump-link" href="RecompilerImplementation%253AInstructionINVOKEVIRTUAL.html#searchInput">Jump to search</a>
-		<div id="mw-content-text" class="mw-body-content mw-content-ltr" lang="en" dir="ltr"><div class="mw-parser-output"><p><strong>Instruction INVOKEVIRTUAL implementation</strong>
+		<a class="mw-jump-link" href="RecompilerImplementation%253AInstructionINVOKEINTERFACE.html#mw-head">Jump to navigation</a>
+		<a class="mw-jump-link" href="RecompilerImplementation%253AInstructionINVOKEINTERFACE.html#searchInput">Jump to search</a>
+		<div id="mw-content-text" class="mw-body-content mw-content-ltr" lang="en" dir="ltr"><div class="mw-parser-output"><p><strong>Instruction INVOKEINTERFACE implementation</strong>
 </p><p><a href="Main_Page.html" title="Main Page">Main Page</a>
 </p><p><a href="JavaRecompiler.html" title="JavaRecompiler">Java Recompiler</a>
 </p><p><a href="JavaRecompilerInstructionImplementation.html" title="JavaRecompilerInstructionImplementation">Java Recompiler: Instruction Implementation</a>
 </p>
 <hr />
-<p>INVOKEVIRTUAL is used to execute regular methods. In Java everything that is not constructor, interface method, static or dynamic is virtual.
+<p>INVOKEINTERFACE is used to execute methods that class has implemented as part of an interface. The method invocation is similar to INVOKEVIRTUAL but the instruction itself is slightly different from INVOKEVIRTUAL:
+</p>
+<ul><li>INVOKEINTERFACE has extra field: 'count'. Count is same as parameter count that must be extracted from stack based on method signature.</li>
+<li>INVOKEINTERFACE has extra field: 'zero'. Zero is always 0.</li></ul>
+<p>Neither field is necessary for anything, they are there for historical reasons.
 </p><p>Parameters to the method are parsed using the method descriptor and they are popped from <b><a href="RecompilerImplementation%253AOperandStack.html" title="RecompilerImplementation:OperandStack">operand stack</a></b> in right-to-left order.
-</p><p>Void virtual methods are handled. Code for the function call is generated, nothing is pushed to the operand stack.
+</p><p>Void methods are handled. Code for the function call is generated, nothing is pushed to the operand stack.
 </p><p>If INVOKEVIRTUAL is invoked on 'new Class()' object then 'new Class()' is wrapped with parentheses. Java operator precedence seems to be backwards from C++ between 'new' and '-&gt;'.
 </p><p>Java: This is valid:
 </p>
@@ -50,7 +54,7 @@ Transclusion expansion time report (%,ms,calls,template)
 -->
 
 </div>
-<div class="printfooter">Retrieved from "<a dir="ltr" href="http://192.168.0.42:81/wiki/index.php?title=RecompilerImplementation:InstructionINVOKEVIRTUAL&amp;oldid=146">http://192.168.0.42:81/wiki/index.php?title=RecompilerImplementation:InstructionINVOKEVIRTUAL&amp;oldid=146</a>"</div></div>
+<div class="printfooter">Retrieved from "<a dir="ltr" href="http://192.168.0.42:81/wiki/index.php?title=RecompilerImplementation:InstructionINVOKEINTERFACE&amp;oldid=147">http://192.168.0.42:81/wiki/index.php?title=RecompilerImplementation:InstructionINVOKEINTERFACE&amp;oldid=147</a>"</div></div>
 		<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>
 	</div>
 </div>
@@ -58,7 +62,7 @@ Transclusion expansion time report (%,ms,calls,template)
 
 <footer id="footer" class="mw-footer" role="contentinfo" >
 	<ul id="footer-info" >
-	<li id="footer-info-lastmod"> This page was last edited on 11 February 2022, at 18:24.</li>
+	<li id="footer-info-lastmod"> This page was last edited on 11 February 2022, at 18:25.</li>
 </ul>
 
 	<ul id="footer-places" >
