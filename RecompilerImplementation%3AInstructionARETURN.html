@@ -32,7 +32,16 @@
 </p>
 <hr />
 <p>ARETURN instruction pops the top entry from the <b><a href="RecompilerImplementation%253AOperandStack.html" title="RecompilerImplementation:OperandStack">operand stack</a></b> and returns the value from a method.
+</p><p>C++ counterpart methods return <b>Pointer&lt;Type&gt;</b> instead of <b>Type *</b> to make sure that the object reference is tracked by reference counting garbage collector:
 </p>
+<ol><li>The temporary Pointer object is initialized with the reference and is returned from the method. Object reference count is 1.</li>
+<li>The temporary Pointer is stored into the return variable in C++. Object reference count is 2.</li>
+<li>Temporary object is discarded. Object reference count is 1.</li>
+<li>Return object is eventually discarded. Object reference count is 0. Referenced object is deleted.</li></ol>
+<p>When method return value is not used, steps 2 and 4 are not present and new sequence is:
+</p>
+<ol><li>The temporary Pointer object is initialized with the reference and is returned from the method. Object reference count is 1.</li>
+<li>Temporary object is discarded as being unused. Object reference count is 0. Referenced object is deleted.</li></ol>
 
 <!--
 Transclusion expansion time report (%,ms,calls,template)
@@ -40,7 +49,7 @@ Transclusion expansion time report (%,ms,calls,template)
 -->
 
 </div>
-<div class="printfooter">Retrieved from "<a dir="ltr" href="http://192.168.0.42:81/wiki/index.php?title=RecompilerImplementation:InstructionARETURN&amp;oldid=149">http://192.168.0.42:81/wiki/index.php?title=RecompilerImplementation:InstructionARETURN&amp;oldid=149</a>"</div></div>
+<div class="printfooter">Retrieved from "<a dir="ltr" href="http://localhost:81/wiki/index.php?title=RecompilerImplementation:InstructionARETURN&amp;oldid=168">http://localhost:81/wiki/index.php?title=RecompilerImplementation:InstructionARETURN&amp;oldid=168</a>"</div></div>
 		<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>
 	</div>
 </div>
@@ -48,7 +57,7 @@ Transclusion expansion time report (%,ms,calls,template)
 
 <footer id="footer" class="mw-footer" role="contentinfo" >
 	<ul id="footer-info" >
-	<li id="footer-info-lastmod"> This page was last edited on 11 February 2022, at 20:22.</li>
+	<li id="footer-info-lastmod"> This page was last edited on 30 April 2022, at 18:34.</li>
 </ul>
 
 	<ul id="footer-places" >

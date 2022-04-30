@@ -30,6 +30,28 @@
 </p><p><a href="Main_Page.html" title="Main Page">Main page</a>
 </p><p>First, before going into depths of JNI and native code, I will implement recompiler using the same recompiler as a test app. The advantage of doing this is that recompiler is pure Java, and it is easy to verify generated C++ code by single-stepping through both recompiler and output projects at same time.
 </p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="JavaRecompilerImplementationNotes.html#Java_vs._C++"><span class="tocnumber">1</span> <span class="toctext">Java vs. C++</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="JavaRecompilerImplementationNotes.html#Java_classes_vs_C++_classes"><span class="tocnumber">1.1</span> <span class="toctext">Java classes vs C++ classes</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="JavaRecompilerImplementationNotes.html#References_vs._pointers"><span class="tocnumber">1.2</span> <span class="toctext">References vs. pointers</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-4"><a href="JavaRecompilerImplementationNotes.html#C++_Implementation"><span class="tocnumber">2</span> <span class="toctext">C++ Implementation</span></a>
+<ul>
+<li class="toclevel-2 tocsection-5"><a href="JavaRecompilerImplementationNotes.html#Local_variables"><span class="tocnumber">2.1</span> <span class="toctext">Local variables</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<h1><span id="Java_vs._C.2B.2B"></span><span class="mw-headline" id="Java_vs._C++">Java vs. C++</span></h1>
+<h2><span id="Java_classes_vs_C.2B.2B_classes"></span><span class="mw-headline" id="Java_classes_vs_C++_classes">Java classes vs C++ classes</span></h2>
+<h2><span class="mw-headline" id="References_vs._pointers">References vs. pointers</span></h2>
+<p>Java references are much more than simple C++ pointers.
+</p>
+<h1><span id="C.2B.2B_Implementation"></span><span class="mw-headline" id="C++_Implementation">C++ Implementation</span></h1>
 <h2><span class="mw-headline" id="Local_variables">Local variables</span></h2>
 <p>Local variable info is provided by LocalVariableTable attribute in Code attribute for the method. The table contains starting PC and length of the valid range for each variable. Multiple variables can occupy same local variable table slot as long as their PC ranges do not overlap.
 </p><p>Starting PC for the variable has an issue: if variable is first assigned using xSTORE instruction, the starting PC for the variable is set to right after that xSTORE instruction. xSTORE instruction generation can't find that local variable because the instruction is just ahead of the range in which variable is available. To work around this issue, starting PC is rolled back by the length of the xSTORE instruction.
