@@ -34,6 +34,7 @@
 <p>ANEWARRAY allocates one-dimensional array of objects, all references in the array are initialized with null.
 </p><p>Arrays in converted C++ code are implemented using a custom <b>JavaArray</b> class. Field 'length' is used in same way as Java array 'length' field.
 </p><p>The instruction extracts the array length from the <b><a href="RecompilerImplementation%253AOperandStack.html" title="RecompilerImplementation:OperandStack">operand stack</a></b>, extracts array element type from the instruction and pushes 'new JavaArray&lt;&gt;' to the operand stack.
+</p><p>As any other *NEW*, the new object is stored in a temporary Pointer&lt;&gt; wrapper for the reference so that the object is guaranteed to be destroyed if it is not assigned into any other variable.
 </p>
 
 <!--
@@ -42,7 +43,7 @@ Transclusion expansion time report (%,ms,calls,template)
 -->
 
 </div>
-<div class="printfooter">Retrieved from "<a dir="ltr" href="http://localhost:81/wiki/index.php?title=RecompilerImplementation:InstructionANEWARRAY&amp;oldid=93">http://localhost:81/wiki/index.php?title=RecompilerImplementation:InstructionANEWARRAY&amp;oldid=93</a>"</div></div>
+<div class="printfooter">Retrieved from "<a dir="ltr" href="http://localhost:81/wiki/index.php?title=RecompilerImplementation:InstructionANEWARRAY&amp;oldid=170">http://localhost:81/wiki/index.php?title=RecompilerImplementation:InstructionANEWARRAY&amp;oldid=170</a>"</div></div>
 		<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>
 	</div>
 </div>
@@ -50,7 +51,7 @@ Transclusion expansion time report (%,ms,calls,template)
 
 <footer id="footer" class="mw-footer" role="contentinfo" >
 	<ul id="footer-info" >
-	<li id="footer-info-lastmod"> This page was last edited on 4 February 2022, at 18:07.</li>
+	<li id="footer-info-lastmod"> This page was last edited on 1 May 2022, at 05:41.</li>
 </ul>
 
 	<ul id="footer-places" >
