@@ -8,12 +8,12 @@ const columnDefs = [
 				headerName: "Name",
 				width: 300,
 				sortable: true,
-				field: "name",
+				field: "Name",
 				colId: "Name",
 			},
 			{
 				headerName: "Size",
-				width: 100,
+				width: 60,
 				cellClass: "ag-right-aligned-cell",
 				sortable: true,
 				comparator: CompareColumnAndName,
@@ -25,7 +25,7 @@ const columnDefs = [
 	},
 	{
 		headerName: "FP",
-		width: 75,
+		width: 60,
 		cellClass: "ag-right-aligned-cell",
 		sortable: true,
 		comparator: CompareColumnAndName,
@@ -39,7 +39,7 @@ const columnDefs = [
 		children: [
 			{
 				headerName: "AA",
-				width: 100,
+				width: 60,
 				cellClass: "ag-right-aligned-cell",
 				sortable: true,
 				comparator: CompareColumnAndName,
@@ -50,7 +50,7 @@ const columnDefs = [
 			},
 			{
 				headerName: "AD",
-				width: 100,
+				width: 60,
 				cellClass: "ag-right-aligned-cell",
 				sortable: true,
 				comparator: CompareColumnAndName,
@@ -61,7 +61,7 @@ const columnDefs = [
 			},
 			{
 				headerName: "DA",
-				width: 100,
+				width: 60,
 				cellClass: "ag-right-aligned-cell",
 				sortable: true,
 				comparator: CompareColumnAndName,
@@ -72,7 +72,7 @@ const columnDefs = [
 			},
 			{
 				headerName: "DD",
-				width: 100,
+				width: 60,
 				cellClass: "ag-right-aligned-cell",
 				sortable: true,
 				comparator: CompareColumnAndName,
@@ -88,7 +88,7 @@ const columnDefs = [
 		children: [
 			{
 				headerName: "AA",
-				width: 100,
+				width: 60,
 				cellClass: "ag-right-aligned-cell",
 				sortable: true,
 				comparator: CompareColumnAndName,
@@ -99,7 +99,7 @@ const columnDefs = [
 			},
 			{
 				headerName: "AD",
-				width: 100,
+				width: 60,
 				cellClass: "ag-right-aligned-cell",
 				sortable: true,
 				comparator: CompareColumnAndName,
@@ -110,7 +110,7 @@ const columnDefs = [
 			},
 			{
 				headerName: "DA",
-				width: 100,
+				width: 60,
 				cellClass: "ag-right-aligned-cell",
 				sortable: true,
 				comparator: CompareColumnAndName,
@@ -121,7 +121,7 @@ const columnDefs = [
 			},
 			{
 				headerName: "DD",
-				width: 100,
+				width: 60,
 				cellClass: "ag-right-aligned-cell",
 				sortable: true,
 				comparator: CompareColumnAndName,
@@ -137,7 +137,7 @@ const columnDefs = [
 		children: [
 			{
 				headerName: "AA",
-				width: 100,
+				width: 60,
 				cellClass: "ag-right-aligned-cell",
 				sortable: true,
 				comparator: CompareColumnAndName,
@@ -148,7 +148,7 @@ const columnDefs = [
 			},
 			{
 				headerName: "AD",
-				width: 100,
+				width: 60,
 				cellClass: "ag-right-aligned-cell",
 				sortable: true,
 				comparator: CompareColumnAndName,
@@ -159,7 +159,7 @@ const columnDefs = [
 			},
 			{
 				headerName: "DA",
-				width: 100,
+				width: 60,
 				cellClass: "ag-right-aligned-cell",
 				sortable: true,
 				comparator: CompareColumnAndName,
@@ -170,12 +170,61 @@ const columnDefs = [
 			},
 			{
 				headerName: "DD",
-				width: 100,
+				width: 60,
 				cellClass: "ag-right-aligned-cell",
 				sortable: true,
 				comparator: CompareColumnAndName,
 				colId: "EDD",
 				valueGetter: GetExpeditionDefDef,
+				valueSetter: param => { SingleValueSetter(param); },
+				editable: IsPinnedRow,
+			},
+		]
+	},
+	{
+		headerName: "Quantum Incursion",
+		children: [
+			{
+				headerName: "AA",
+				width: 60,
+				cellClass: "ag-right-aligned-cell",
+				sortable: true,
+				comparator: CompareColumnAndName,
+				colId: "QAA",
+				valueGetter: GetQuantumAttAtt,
+				valueSetter: param => { SingleValueSetter(param); },
+				editable: IsPinnedRow,
+			},
+			{
+				headerName: "AD",
+				width: 60,
+				cellClass: "ag-right-aligned-cell",
+				sortable: true,
+				comparator: CompareColumnAndName,
+				colId: "QAD",
+				valueGetter: GetQuantumAttDef,
+				valueSetter: param => { SingleValueSetter(param); },
+				editable: IsPinnedRow,
+			},
+			{
+				headerName: "DA",
+				width: 60,
+				cellClass: "ag-right-aligned-cell",
+				sortable: true,
+				comparator: CompareColumnAndName,
+				colId: "QDA",
+				valueGetter: GetQuantumDefAtt,
+				valueSetter: param => { SingleValueSetter(param); },
+				editable: IsPinnedRow,
+			},
+			{
+				headerName: "DD",
+				width: 60,
+				cellClass: "ag-right-aligned-cell",
+				sortable: true,
+				comparator: CompareColumnAndName,
+				colId: "QDD",
+				valueGetter: GetQuantumDefDef,
 				valueSetter: param => { SingleValueSetter(param); },
 				editable: IsPinnedRow,
 			},
@@ -198,58 +247,64 @@ const columnDefs = [
 	},
 ];
 
-/*
-
-const ages = [ "BA", "IA", "EMA", "HMA", "LMA", "CA", "INA", "PE", "ME", "PME",
-	"CE", "TE", "FE", "AF", "OF", "VF", "SAM", "SAAB", "SAV", "SAJM", "SAT",
-];
-
-const selectedAge = "SAT";
-
-const selectedCity = 0;
-*/
-
 // specify the data
 const rowData = buildings;
 
-/*
-var scoreAA = localStorage.getItem("scoreAA[" + selectedCity + "]") || 150;
-var scoreAD = localStorage.getItem("scoreAD[" + selectedCity + "]") || 100;
-var scoreDA = localStorage.getItem("scoreDA[" + selectedCity + "]") || 75;
-var scoreDD = localStorage.getItem("scoreDD[" + selectedCity + "]") || 50;
-var scoreGA = localStorage.getItem("scoreGA[" + selectedCity + "]") || 100;
-var scoreGP = localStorage.getItem("scoreGP[" + selectedCity + "]") || 25;
-var scoreGG = localStorage.getItem("scoreGG[" + selectedCity + "]") || 10;
-var scoreFP = localStorage.getItem("scoreFP[" + selectedCity + "]") || 15;
-*/
+var scoreTAA = localStorage.getItem("scoreTAA") || 5;
+var scoreTAD = localStorage.getItem("scoreTAD") || 5;
+var scoreTDA = localStorage.getItem("scoreTDA") || 5;
+var scoreTDD = localStorage.getItem("scoreTDD") || 5;
+
+var scoreBAA = localStorage.getItem("scoreBAA") || 5;
+var scoreBAD = localStorage.getItem("scoreBAD") || 5;
+var scoreBDA = localStorage.getItem("scoreBDA") || 5;
+var scoreBDD = localStorage.getItem("scoreBDD") || 5;
+
+var scoreEAA = localStorage.getItem("scoreEAA") || 5;
+var scoreEAD = localStorage.getItem("scoreEAD") || 5;
+var scoreEDA = localStorage.getItem("scoreEDA") || 5;
+var scoreEDD = localStorage.getItem("scoreEDD") || 5;
+
+var scoreQAA = localStorage.getItem("scoreQAA") || 10;
+var scoreQAD = localStorage.getItem("scoreQAD") || 10;
+var scoreQDA = localStorage.getItem("scoreQDA") || 10;
+var scoreQDD = localStorage.getItem("scoreQDD") || 10;
+
+var scoreFP = localStorage.getItem("scoreFP") || 5;
+
 var topRowData = [{
 		"name": pinnedRowBuildingName,
-//		"type": "", "X": 0, "Y": 0,
-//		"GA": 0, "GP": 0, "GG": 0, "FP": 0, "road": false,
-//		"AA": [],
-//		"AD": [],
-//		"DA": [],
-//		"DD": [],
+		"X": 0, "Y": 0, "Road": "N", "FP": 0,
+		"TAA": 0, "TAD": 0, "TDA": 0, "TDD": 0,
+		"BAA": 0, "BAD": 0, "BDA": 0, "BDD": 0,
+		"EAA": 0, "EAD": 0, "EDA": 0, "EDD": 0,
+		"QAA": 0, "QAD": 0, "QDA": 0, "QDD": 0,
 	}];
 
 function CreateTopRowData()
 {
-/*
-	topRowData[selectedCity].GA = scoreGA;
-	topRowData[selectedCity].GP = scoreGP;
-	topRowData[selectedCity].GG = scoreGG;
-	topRowData[selectedCity].FP = scoreFP;
-	topRowData[selectedCity].AA = [];
-	topRowData[selectedCity].AD = [];
-	topRowData[selectedCity].DA = [];
-	topRowData[selectedCity].DD = [];
-	for (var i = 0; i < ages.length; i++) {
-		topRowData[selectedCity].AA.push(scoreAA);
-		topRowData[selectedCity].AD.push(scoreAD);
-		topRowData[selectedCity].DA.push(scoreDA);
-		topRowData[selectedCity].DD.push(scoreDD);
-	}
-*/
+	topRowData[0].TAA = scoreTAA;
+	topRowData[0].TAD = scoreTAD;
+	topRowData[0].TDA = scoreTDA;
+	topRowData[0].TDD = scoreTDD;
+
+	topRowData[0].BAA = scoreBAA;
+	topRowData[0].BAD = scoreBAD;
+	topRowData[0].BDA = scoreBDA;
+	topRowData[0].BDD = scoreBDD;
+
+	topRowData[0].EAA = scoreEAA;
+	topRowData[0].EAD = scoreEAD;
+	topRowData[0].EDA = scoreEDA;
+	topRowData[0].EDD = scoreEDD;
+
+	topRowData[0].QAA = scoreQAA;
+	topRowData[0].QAD = scoreQAD;
+	topRowData[0].QDA = scoreQDA;
+	topRowData[0].QDD = scoreQDD;
+
+	topRowData[0].FP = scoreFP;
+
 	return topRowData;
 }
 
@@ -288,13 +343,13 @@ function GetBuildingScore(node) {
 function CompareColumnAndName(valueA, valueB, nodeA, nodeB, isDescending)
 {
 	if (valueA !== valueB)
-		return valueA > valueB ? 1 : -1;
-	return nodeA.data.name > nodeB.data.name ? 1 : -1;
+		return (valueA * 1) > (valueB * 1) ? 1 : -1;
+	return nodeA.data.Name > nodeB.data.Name ? 1 : -1;
 }
 
 function GetBuildingSize(node)
 {
-	var road = Math.min(node.data.X, node.data.Y) * (node.data.road ? 0.5 : 0);
+	var road = Math.min(node.data.X, node.data.Y) * (node.data.Road == "Y" ? 0.5 : 0);
 	return node.data.X * node.data.Y + road;
 }
 
@@ -307,110 +362,82 @@ function FixedDecimal1(value)
 
 function GetTroopAttAtt(node)
 {
-//	var ageIndex = ages.indexOf(selectedAge);
-	var value = 0;
-//	if (node.data.AA)
-//		value = node.data.AA[ageIndex];
-	return value;
+	return node.data.TAA;
 }
 
 function GetTroopAttDef(node)
 {
-//	var ageIndex = ages.indexOf(selectedAge);
-	var value = 0;
-//	if (node.data.AD)
-//		value = node.data.AD[ageIndex];
-	return value;
+	return node.data.TAD;
 }
 
 function GetTroopDefAtt(node)
 {
-//	var ageIndex = ages.indexOf(selectedAge);
-	var value = 0;
-//	if (node.data.DA)
-//		value = node.data.DA[ageIndex];
-	return value;
+	return node.data.TDA;
 }
 
 function GetTroopDefDef(node)
 {
-//	var ageIndex = ages.indexOf(selectedAge);
-	var value = 0;
-//	if (node.data.DD)
-//		value = node.data.DD[ageIndex];
-	return value;
+	return node.data.TDD;
 }
 
 function GetBattlegroundAttAtt(node)
 {
-//	var ageIndex = ages.indexOf(selectedAge);
-	var value = 0;
-//	if (node.data.AA)
-//		value = node.data.AA[ageIndex];
-	return value;
+	return node.data.BAA;
 }
 
 function GetBattlegroundAttDef(node)
 {
-//	var ageIndex = ages.indexOf(selectedAge);
-	var value = 0;
-//	if (node.data.AD)
-//		value = node.data.AD[ageIndex];
-	return value;
+	return node.data.BAD;
 }
 
 function GetBattlegroundDefAtt(node)
 {
-//	var ageIndex = ages.indexOf(selectedAge);
-	var value = 0;
-//	if (node.data.DA)
-//		value = node.data.DA[ageIndex];
-	return value;
+	return node.data.BDA;
 }
 
 function GetBattlegroundDefDef(node)
 {
-//	var ageIndex = ages.indexOf(selectedAge);
-	var value = 0;
-//	if (node.data.DD)
-//		value = node.data.DD[ageIndex];
-	return value;
+	return node.data.BDD;
 }
 
 function GetExpeditionAttAtt(node)
 {
-//	var ageIndex = ages.indexOf(selectedAge);
-	var value = 0;
-//	if (node.data.AA)
-//		value = node.data.AA[ageIndex];
-	return value;
+	return node.data.EAA;
 }
 
 function GetExpeditionAttDef(node)
 {
-//	var ageIndex = ages.indexOf(selectedAge);
-	var value = 0;
-//	if (node.data.AD)
-//		value = node.data.AD[ageIndex];
-	return value;
+	return node.data.EAD;
 }
 
 function GetExpeditionDefAtt(node)
 {
-//	var ageIndex = ages.indexOf(selectedAge);
-	var value = 0;
-//	if (node.data.DA)
-//		value = node.data.DA[ageIndex];
-	return value;
+	return node.data.EDA;
 }
 
 function GetExpeditionDefDef(node)
 {
-//	var ageIndex = ages.indexOf(selectedAge);
-	var value = 0;
-//	if (node.data.DD)
-//		value = node.data.DD[ageIndex];
-	return value;
+	return node.data.EDD;
+}
+
+function GetQuantumAttAtt(node)
+{
+	return node.data.QAA;
+}
+
+function GetQuantumAttDef(node)
+{
+	return node.data.QAD;
+}
+
+function GetQuantumDefAtt(node)
+{
+	return node.data.QDA;
+}
+
+function GetQuantumDefDef(node)
+{
+	return node.data.QDD;
 }
 
 // https://stackoverflow.com/questions/55358178/ag-grid-how-to-make-a-particular-column-from-a-particular-row-editable-or-non
@@ -449,7 +476,7 @@ function SingleValueSetter(param) {
 			scoreDD = newValue;
 			break;
 	}
-	localStorage.setItem("score"+ colId + "[" + selectedCity + "]", newValue);
+	localStorage.setItem("score"+ colId + "", newValue);
 	CreateTopRowData();
 	setTimeout(function() {
 			aggrid.gridOptions.api.sortController.onSortChanged();
