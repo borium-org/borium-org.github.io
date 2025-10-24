@@ -318,26 +318,35 @@ const gridOptions =
 };
 
 function GetBuildingScore(node) {
-//	if (GetBuildingSize(node) == 0)
+	if (GetBuildingSize(node) == 0)
 		return 0;
-/*
-	var ageIndex = ages.indexOf(selectedAge);
+
 	var value = 0;
-	if (node.data.AA)
-		value += node.data.AA[ageIndex] * scoreAA;
-	if (node.data.AD)
-		value += node.data.AD[ageIndex] * scoreAD;
-	if (node.data.DA)
-		value += node.data.DA[ageIndex] * scoreDA;
-	if (node.data.DD)
-		value += node.data.DD[ageIndex] * scoreDD;
-	value += node.data.GA * scoreGA;
-	value += node.data.GP * scoreGP;
-	value += node.data.GG * scoreGG;
+
+	value += node.data.TAA * scoreTAA;
+	value += node.data.TAD * scoreTAD;
+	value += node.data.TDA * scoreTDA;
+	value += node.data.TDD * scoreTDD;
+
+	value += node.data.BAA * scoreBAA;
+	value += node.data.BAD * scoreBAD;
+	value += node.data.BDA * scoreBDA;
+	value += node.data.BDD * scoreBDD;
+
+	value += node.data.EAA * scoreEAA;
+	value += node.data.EAD * scoreEAD;
+	value += node.data.EDA * scoreEDA;
+	value += node.data.EDD * scoreEDD;
+
+	value += node.data.QAA * scoreQAA;
+	value += node.data.QAD * scoreQAD;
+	value += node.data.QDA * scoreQDA;
+	value += node.data.QDD * scoreQDD;
+
 	value += node.data.FP * scoreFP;
+
 	value /= GetBuildingSize(node);
 	return value;
-*/
 }
 
 function CompareColumnAndName(valueA, valueB, nodeA, nodeB, isDescending)
